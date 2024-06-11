@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-type VariantProp = "album" | "artiste" | "playlist";
+export type VariantProp = "album" | "artiste" | "playlist";
 interface CardProp {
     variant: VariantProp;
     pinned?: boolean;

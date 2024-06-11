@@ -7,6 +7,7 @@ import { useSelectedLayoutSegment } from "next/navigation";
 import { Input } from "../ui/input";
 import { useSpotifyContext } from "@/utils/store/store";
 function Menubar() {
+    const currentLayout = useSelectedLayoutSegment();
     const openFriendsTab = useSpotifyContext((prev) => prev.openFriendsTab);
     const [active, setActive] = useState<number>(0);
     const switchTab = ({ indx }: { indx: number }) => {
@@ -20,9 +21,10 @@ function Menubar() {
                         key={link.id}
                         href={link.href}
                         scroll={false}
-                        onClick={() => switchTab({ indx })}
                         className="group flex gap-[10px] py-[6.79px] pl-[15px] items-center data-[active='true']:bg-primaryBackground rounded-[10px] data-[active='true']:my-1"
-                        data-active={indx === active}
+                        data-active={
+                            currentLayout === link.href.replace("/", "")
+                        }
                     >
                         <div className="flex justify-center items-center">
                             <Image
