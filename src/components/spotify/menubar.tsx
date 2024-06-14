@@ -3,16 +3,28 @@ import { navLinks, userNav } from "@/utils/projectData";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { useSelectedLayoutSegment } from "next/navigation";
-import { Input } from "../ui/input";
+import {
+    useSelectedLayoutSegment,
+    useRouter,
+    useSearchParams,
+} from "next/navigation";
 import { useSpotifyContext } from "@/utils/store/store";
 function Menubar() {
+    const searchParams = useSearchParams();
+    const { push, replace } = useRouter();
     const currentLayout = useSelectedLayoutSegment();
     const openFriendsTab = useSpotifyContext((prev) => prev.openFriendsTab);
     const [active, setActive] = useState<number>(0);
-    const switchTab = ({ indx }: { indx: number }) => {
-        setActive((prev) => (prev == indx ? 0 : indx));
-    };
+    function setSearchOption(param: string) {
+        const newParams = new URLSearchParams(searchParams);
+        if (param) {
+            newParams.set("query", param);
+            newParams.toString();
+        } else {
+            newParams.delete("query");
+        }
+        replace(`/search?${newParams}`);
+    }
     return (
         <div className="flex justify-between col-[1/-1] bg-mainBackground mb-[3px]">
             <div className="flex shrink-0 [&>:nth-child(1)]:w-[262px] [&>:nth-child(2)]:w-[210px] [&>:nth-child(3)]:w-[210px] [&>:nth-child(4)]:w-[350px]">
@@ -49,8 +61,9 @@ function Menubar() {
                         />
                     </div>
                     <input
-                        className="bg-transparent outline-none focus:outline-none placeholder:text-secondaryForeground focus:text-white text-sm"
+                        className="bg-transparent outline-none focus:outline-none placeholder:text-secondaryForeground text-white text-sm"
                         placeholder="Search"
+                        onChange={(e) => setSearchOption(e.target.value)}
                     />
                 </div>
             </div>

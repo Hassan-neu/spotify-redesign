@@ -13,7 +13,7 @@ function Page() {
         <div className="border rounded-[10px] border-secondaryBackground overflow-scroll hide-scroll">
             <HomeMenu />
             <div className="mx-[25px] mt-[15px] min-h-screen flex flex-col gap-[11px]">
-                <HomePlaylists length={10} variant="artiste" />
+                <HomePlaylists length={14} variant="artiste" />
                 <HomePlaylists length={10} variant="album" />
                 <HomePlaylists length={10} variant="playlist" />
             </div>

@@ -1,11 +1,13 @@
 import Image from "next/image";
 import React from "react";
-export type VariantProp = "album" | "artiste" | "playlist";
+
+export type VariantProp = "album" | "artiste" | "playlist" | string;
 interface CardProp {
     variant: VariantProp;
     pinned?: boolean;
+    showText: boolean;
 }
-function PlaylistCard({ variant, pinned }: CardProp) {
+function PlaylistCard({ variant, pinned, showText }: CardProp) {
     const imageClass =
         variant == "artiste" ? "rounded-full" : "rounded-[7.25px]";
     const alignText =
@@ -17,7 +19,7 @@ function PlaylistCard({ variant, pinned }: CardProp) {
             ? "before:w-[154px] before:h-[6px] before:bg-[#CCF665] before:bg-opacity-30 before:rounded-t-[7.25px] before:-top-[8px] before:absolute before:left-1/2 before:-translate-x-1/2 after:w-[133px] after:h-[3px] after:bg-[#CCF665] after:bg-opacity-15 after:rounded-t-[7.25px] after:-top-[13px] after:absolute after:left-1/2 after:-translate-x-1/2"
             : "";
     return (
-        <div className="w-[170px] h-[253px] flex flex-col gap-[6px] relative rounded-[7.25px]">
+        <div className="w-[170px] max-h-[253px] flex flex-col gap-[6px] relative rounded-[7.25px]">
             {pinned && (
                 <div
                     className={`z-10 absolute rounded-full bg-primaryBackground top-0 right-0`}
@@ -40,17 +42,19 @@ function PlaylistCard({ variant, pinned }: CardProp) {
                     className={imageClass}
                 />
             </div>
-            <div className="flex flex-col gap-2">
-                <div className={`flex items-center ${alignText} text-sm`}>
-                    <span className="font-medium text-primaryForeground tracking-wide">
-                        Rock Mix
-                    </span>
-                    <span className={numberColor}>50</span>
+            {showText && (
+                <div className="flex flex-col gap-2">
+                    <div className={`flex items-center ${alignText} text-sm`}>
+                        <span className="font-medium text-primaryForeground tracking-wide">
+                            Rock Mix
+                        </span>
+                        <span className={numberColor}>50</span>
+                    </div>
+                    <div className="text-secondaryForeground text-xs">
+                        Red Hot Chili Peppers, R.E.M., Guns N&apos; Roses...
+                    </div>
                 </div>
-                <div className="text-secondaryForeground text-xs">
-                    Red Hot Chili Peppers, R.E.M., Guns N&apos; Roses...
-                </div>
-            </div>
+            )}
         </div>
     );
 }

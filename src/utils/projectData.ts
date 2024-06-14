@@ -2,7 +2,7 @@ import type { NavLink, SideMenu } from "./types";
 export const navLinks: NavLink[] = [
     {
         id: 1,
-        href: "/#library",
+        href: "/library",
         icon: "/assets/spotify-icons/library.png",
         label: "My Library",
     },

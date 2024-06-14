@@ -5,7 +5,7 @@ import React from "react";
 
 function SideMenu() {
     return (
-        <div className="bg-mainBackground col-[1/2] row-[2/-1] p-[11px] pr-0">
+        <div className="bg-primaryBackground col-[1/2] row-[2/-1] p-[11px] pr-0">
             <div className="h-full flex flex-col gap-[11px]">
                 {sideMenu.map((menu) => (
                     <Link

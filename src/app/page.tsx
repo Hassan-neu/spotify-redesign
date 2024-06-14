@@ -17,9 +17,6 @@ export default async function Home() {
             {/* {users.map((user) => (
                 <ListUser key={user.id} {...user} />
             ))} */}
-            {Array.from({ length: 6 }, (_v, indx) => (
-                <PlaylistCard variant="playlist" key={indx} />
-            ))}
         </main>
     );
 }
