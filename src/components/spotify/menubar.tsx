@@ -14,7 +14,6 @@ function Menubar() {
     const { push, replace } = useRouter();
     const currentLayout = useSelectedLayoutSegment();
     const openFriendsTab = useSpotifyContext((prev) => prev.openFriendsTab);
-    const [active, setActive] = useState<number>(0);
     function setSearchOption(param: string) {
         const newParams = new URLSearchParams(searchParams);
         if (param) {

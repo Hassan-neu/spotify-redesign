@@ -44,7 +44,7 @@ export const userNav: NavLink[] = [
         id: 103,
         href: "/",
         icon: "/assets/spotify-icons/settings.png",
-        label: "friends",
+        label: "settings",
     },
 ];
 
@@ -104,5 +104,57 @@ export const sideMenu: SideMenu[] = [
         href: "/",
         icon: "/assets/spotify-icons/artist.png",
         label: "Artist",
+    },
+];
+
+export const artistenav: NavLink[] = [
+    {
+        id: 101,
+        href: "",
+        icon: "",
+        label: "Home",
+        btnFunc: (action) => action(),
+    },
+    {
+        id: 102,
+        href: "albums",
+        icon: "",
+        label: "Albums",
+        btnFunc: (action) => action(),
+    },
+    {
+        id: 103,
+        href: "singles and ep",
+        icon: "",
+        label: "Singles and EPs",
+        btnFunc: (action) => action(),
+    },
+    {
+        id: 104,
+        href: "compilation",
+        icon: "",
+        label: "Compilations",
+        btnFunc: (action) => action(),
+    },
+    {
+        id: 105,
+        href: "merch",
+        icon: "",
+        label: "Merch",
+        btnFunc: (action) => action(),
+    },
+    {
+        id: 106,
+        href: "about",
+        icon: "",
+        label: "About",
+        btnFunc: (action) => action(),
+    },
+    {
+        id: 107,
+        href: "feature and more",
+        icon: "",
+        label: "Features & More",
+        btnFunc: (action) => action(),
     },
 ];

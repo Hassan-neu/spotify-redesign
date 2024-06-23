@@ -7,13 +7,17 @@ function HomeMenu() {
     const searchParams = useSearchParams();
     const { replace } = useRouter();
     const path = usePathname();
-    function setSortOption({ param }: { param: string }) {
+    function setFilterOption({ param }: { param: string }) {
         const newParams = new URLSearchParams(searchParams);
-        newParams.set("sort", param);
-        newParams.toString();
+        if (param) {
+            newParams.set("filter", param);
+            newParams.toString();
+        } else {
+            newParams.delete("filter");
+        }
         return replace(`${path}?${newParams}`);
     }
-    const activeSort = searchParams.get("sort");
+    const activeSort = searchParams.get("filter");
     const sortClassName = ({ param }: { param: string }) =>
         activeSort == param &&
         "text-primaryBackground bg-primaryForeground font-bold bg-opacity-100";
@@ -25,7 +29,7 @@ function HomeMenu() {
                         "px-[15px] py-2 text-sm rounded-lg text-white bg-secondaryBackground bg-opacity-50",
                         sortClassName({ param: "all" })
                     )}
-                    onClick={() => setSortOption({ param: "all" })}
+                    onClick={() => setFilterOption({ param: "all" })}
                 >
                     All
                 </button>
@@ -34,7 +38,7 @@ function HomeMenu() {
                         "px-[15px] py-2 text-white text-sm rounded-lg bg-secondaryBackground bg-opacity-50",
                         sortClassName({ param: "music" })
                     )}
-                    onClick={() => setSortOption({ param: "music" })}
+                    onClick={() => setFilterOption({ param: "music" })}
                 >
                     Music
                 </button>
@@ -43,7 +47,7 @@ function HomeMenu() {
                         "px-[15px] py-2 text-white text-sm rounded-lg bg-secondaryBackground bg-opacity-50",
                         sortClassName({ param: "podcast" })
                     )}
-                    onClick={() => setSortOption({ param: "podcast" })}
+                    onClick={() => setFilterOption({ param: "podcast" })}
                 >
                     Podcasts
                 </button>
@@ -52,19 +56,19 @@ function HomeMenu() {
                         "px-[15px] py-2 text-white text-sm rounded-lg bg-secondaryBackground bg-opacity-50",
                         sortClassName({ param: "audiobook" })
                     )}
-                    onClick={() => setSortOption({ param: "audiobook" })}
+                    onClick={() => setFilterOption({ param: "audiobook" })}
                 >
                     Audiobooks
                 </button>
             </div>
-            <div>
+            <button onClick={() => alert("Hello")}>
                 <Image
                     src={"/assets/spotify-icons/adjust.png"}
                     alt=""
                     width={40.41}
                     height={40.41}
                 />
-            </div>
+            </button>
         </div>
     );
 }

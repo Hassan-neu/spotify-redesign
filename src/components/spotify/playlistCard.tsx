@@ -42,19 +42,20 @@ function PlaylistCard({ variant, pinned, showText }: CardProp) {
                     className={imageClass}
                 />
             </div>
-            {showText && (
-                <div className="flex flex-col gap-2">
-                    <div className={`flex items-center ${alignText} text-sm`}>
-                        <span className="font-medium text-primaryForeground tracking-wide">
-                            Rock Mix
-                        </span>
-                        <span className={numberColor}>50</span>
-                    </div>
+
+            <div className="flex flex-col gap-2">
+                <div className={`flex items-center ${alignText} text-sm`}>
+                    <span className="font-medium text-primaryForeground tracking-wide">
+                        Rock Mix
+                    </span>
+                    <span className={numberColor}>50</span>
+                </div>
+                {variant !== "artiste" && (
                     <div className="text-secondaryForeground text-xs">
                         Red Hot Chili Peppers, R.E.M., Guns N&apos; Roses...
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 }
