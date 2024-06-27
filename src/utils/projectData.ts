@@ -102,7 +102,7 @@ export const sideMenu: SideMenu[] = [
     {
         id: 208,
         href: "/",
-        icon: "/assets/spotify-icons/artist.png",
+        icon: "/assets/spotify-icons/artiste.png",
         label: "Artist",
     },
 ];

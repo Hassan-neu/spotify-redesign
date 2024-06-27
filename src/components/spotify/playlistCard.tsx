@@ -1,13 +1,12 @@
 import Image from "next/image";
 import React from "react";
 
-export type VariantProp = "album" | "artiste" | "playlist" | string;
+export type VariantProp = "album" | "artiste" | "playlist";
 interface CardProp {
     variant: VariantProp;
     pinned?: boolean;
-    showText: boolean;
 }
-function PlaylistCard({ variant, pinned, showText }: CardProp) {
+function PlaylistCard({ variant, pinned }: CardProp) {
     const imageClass =
         variant == "artiste" ? "rounded-full" : "rounded-[7.25px]";
     const alignText =

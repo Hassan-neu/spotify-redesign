@@ -27,9 +27,10 @@ function HomeMenu() {
                 <button
                     className={cn(
                         "px-[15px] py-2 text-sm rounded-lg text-white bg-secondaryBackground bg-opacity-50",
-                        sortClassName({ param: "all" })
+                        !activeSort &&
+                            "text-primaryBackground bg-primaryForeground font-bold bg-opacity-100"
                     )}
-                    onClick={() => setFilterOption({ param: "all" })}
+                    onClick={() => setFilterOption({ param: "" })}
                 >
                     All
                 </button>

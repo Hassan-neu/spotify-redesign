@@ -3,7 +3,7 @@ import React from "react";
 function About() {
     return (
         <div className="flex gap-[120px] px-[25px] py-[40px]">
-            <div className="bg-primary rounded-full w-[132px] h-[132px] font-bold flex flex-col text-primaryForeground justify-center items-center">
+            <div className="bg-[url('/assets/spotify-icons/about-star.png')] rounded-full w-[132px] h-[132px] font-bold flex flex-col text-primaryForeground justify-center items-center bg-no-repeat bg-cover">
                 <span className="text-2xl">#293</span>
                 <span className="text-xs tracking-widest">in the world</span>
             </div>
