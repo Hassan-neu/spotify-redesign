@@ -58,12 +58,14 @@ function NowPlaying() {
             </div>
             <div className="flex gap-[10px] items-center">
                 <div>
-                    <Image
-                        src={"/assets/spotify-icons/playlistimage.png"}
-                        width={51}
-                        height={51}
-                        alt="nowplaying-cover"
-                    />
+                    <div className="w-[51px] h-[51px] relative">
+                        <Image
+                            src="/assets/spotify-icons/playlistimage.png"
+                            fill
+                            alt="nowplaying-cover"
+                            className="object-cover"
+                        />
+                    </div>
                 </div>
                 <div className="flex flex-col text-sm">
                     <p className="text-primaryForeground">Song</p>

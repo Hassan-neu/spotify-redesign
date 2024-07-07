@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function Track({ indx }: { indx: number }) {
@@ -9,19 +10,27 @@ function Track({ indx }: { indx: number }) {
                     {indx + 1}
                 </span>
                 <div className="flex gap-[10px] items-center">
-                    <Image
-                        src={"/assets/spotify-icons/kanye-west.jpg"}
-                        width={51}
-                        height={51}
-                        alt={"track-cover"}
-                    />
+                    <div className="w-[51px] h-[51px] relative">
+                        <Image
+                            src="/assets/spotify-icons/kanye-west.jpg"
+                            fill
+                            alt={"track-cover"}
+                            className="object-cover"
+                        />
+                    </div>
                     <div className="flex flex-col gap-1">
-                        <span className="text-base font-medium text-primaryForeground">
+                        <Link
+                            href={`/track/${indx}`}
+                            className="text-base font-medium text-primaryForeground"
+                        >
                             Track name
-                        </span>
-                        <span className="text-sm text-secondaryForeground">
+                        </Link>
+                        <Link
+                            href={`/artiste/${indx}`}
+                            className="text-sm text-secondaryForeground"
+                        >
                             Artiste Name
-                        </span>
+                        </Link>
                     </div>
                 </div>
             </div>

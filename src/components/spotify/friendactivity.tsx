@@ -5,13 +5,14 @@ function FriendActivity() {
     return (
         <div className="flex gap-3 items-center">
             <div>
-                <Image
-                    src={"/assets/spotify-icons/playlistimage.png"}
-                    width={40.41}
-                    height={40.41}
-                    alt="profilePicture"
-                    className="rounded-full"
-                />
+                <div className="w-[40px] h-[40px] rounded-full overflow-clip relative">
+                    <Image
+                        src="/assets/spotify-icons/playlistimage.png"
+                        fill
+                        alt="profilepicture"
+                        className="object-cover"
+                    />
+                </div>
             </div>
             <div className="flex flex-col gap-[6px]">
                 <p className="text-xs text-primaryForeground">User name</p>

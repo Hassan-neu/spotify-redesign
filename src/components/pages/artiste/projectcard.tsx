@@ -11,19 +11,25 @@ function ProjectCard({ activeview }: { activeview: string }) {
         <>
             <div
                 className={cn(
-                    "flex py-[30px]",
+                    "flex",
                     activeview == "list"
-                        ? "flex-row gap-[18px]"
+                        ? "flex-row gap-[18px] py-[30px]"
                         : "flex-col w-[170px] max-h-[253px] gap-[6px]"
                 )}
             >
-                <div className={`relative`}>
+                <div
+                    className={cn(
+                        `relative rounded-[7.25px] overflow-clip`,
+                        activeview == "grid"
+                            ? "w-[170px] h-[170px]"
+                            : "w-[130px] h-[130px]"
+                    )}
+                >
                     <Image
                         src={"/assets/spotify-icons/playlistimage.png"}
                         alt=""
-                        width={activeview == "grid" ? 170 : 130}
-                        height={activeview == "grid" ? 170 : 130}
-                        className={"rounded-[7.25px]"}
+                        fill
+                        className={"object-cover"}
                     />
                 </div>
 

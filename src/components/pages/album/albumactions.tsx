@@ -13,15 +13,7 @@ function AlbumActions() {
                     href={"/artiste/Kanye West"}
                     className="text-primaryForeground font-medium flex items-center gap-[5px]"
                 >
-                    <span>
-                        <Image
-                            src={"/assets/spotify-icons/artiste.png"}
-                            width={24}
-                            height={24}
-                            alt="artiste-icon"
-                        />
-                    </span>
-                    <span>Kanye West</span>
+                    <span>Spotify</span>
                 </Link>
                 <span className="w-[3px] h-[3px] rounded-full bg-secondaryForeground"></span>
                 <span>2023</span>

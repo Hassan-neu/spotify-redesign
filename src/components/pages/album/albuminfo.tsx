@@ -5,13 +5,14 @@ import React from "react";
 function AlbumInfo() {
     return (
         <div className="flex flex-col gap-[30px] w-[30%]">
-            <Image
-                src={"/assets/spotify-icons/kanye-west.jpg"}
-                width={400}
-                height={400}
-                alt="album-cover"
-                className="rounded-[10px]"
-            />
+            <div className="w-[400px] h-[400px] rounded-[10px] overflow-clip relative">
+                <Image
+                    src="/assets/spotify-icons/kanye-west.jpg"
+                    fill
+                    alt="album-cover"
+                    className="object-cover"
+                />
+            </div>
             <div className="flex gap-[10px] flex-wrap">
                 {[
                     "funk",
@@ -33,13 +34,14 @@ function AlbumInfo() {
                     href={`/artiste/pharell williams`}
                     className="flex gap-[20px] items-center"
                 >
-                    <Image
-                        src={"/assets/spotify-icons/kanye-west.jpg"}
-                        width={61}
-                        height={61}
-                        alt="artiste-cover"
-                        className="rounded-full object-cover h-[61px]"
-                    />
+                    <div className="w-[61px] h-[61px] rounded-full overflow-clip relative">
+                        <Image
+                            src="/assets/spotify-icons/kanye-west.jpg"
+                            fill
+                            alt="artiste-cover"
+                            className="object-cover"
+                        />
+                    </div>
                     <div className="text-sm text-secondaryForeground font-medium">
                         Pharell Williams
                     </div>
@@ -48,13 +50,14 @@ function AlbumInfo() {
                     href={`/artiste/pharell williams`}
                     className="flex gap-[20px] items-center"
                 >
-                    <Image
-                        src={"/assets/spotify-icons/kanye-west.jpg"}
-                        width={61}
-                        height={61}
-                        alt="artiste-cover"
-                        className="rounded-full object-cover h-[61px]"
-                    />
+                    <div className="w-[61px] h-[61px] rounded-full overflow-clip relative">
+                        <Image
+                            src="/assets/spotify-icons/kanye-west.jpg"
+                            fill
+                            alt="artiste-cover"
+                            className="object-cover"
+                        />
+                    </div>
                     <div className="text-sm text-secondaryForeground font-medium">
                         Pharell Williams
                     </div>
@@ -63,13 +66,14 @@ function AlbumInfo() {
                     href={`/artiste/pharell williams`}
                     className="flex gap-[20px] items-center"
                 >
-                    <Image
-                        src={"/assets/spotify-icons/kanye-west.jpg"}
-                        width={61}
-                        height={61}
-                        alt="artiste-cover"
-                        className="rounded-full object-cover h-[61px]"
-                    />
+                    <span className="w-[61px] h-[61px] rounded-full overflow-clip relative">
+                        <Image
+                            src="/assets/spotify-icons/kanye-west.jpg"
+                            fill
+                            alt="artiste-cover"
+                            className="object-cover"
+                        />
+                    </span>
                     <div className="text-sm text-secondaryForeground font-medium">
                         Pharell Williams
                     </div>

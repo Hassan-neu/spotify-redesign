@@ -31,7 +31,7 @@ function Friends() {
                     </div>
                 </div>
                 <div className="flex flex-col gap-6">
-                    {Array.from({ length: 10 }, (_v, indx) => (
+                    {Array.from({ length: 3 }, (_v, indx) => (
                         <FriendActivity key={indx} />
                     ))}
                 </div>

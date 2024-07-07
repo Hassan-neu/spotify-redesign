@@ -17,9 +17,9 @@ function HomeMenu() {
         }
         return replace(`${path}?${newParams}`);
     }
-    const activeSort = searchParams.get("filter");
+    const activeFilter = searchParams.get("filter");
     const sortClassName = ({ param }: { param: string }) =>
-        activeSort == param &&
+        activeFilter == param &&
         "text-primaryBackground bg-primaryForeground font-bold bg-opacity-100";
     return (
         <div className="px-[26px] py-[9.2px] items-center flex justify-between">
@@ -27,7 +27,7 @@ function HomeMenu() {
                 <button
                     className={cn(
                         "px-[15px] py-2 text-sm rounded-lg text-white bg-secondaryBackground bg-opacity-50",
-                        !activeSort &&
+                        !activeFilter &&
                             "text-primaryBackground bg-primaryForeground font-bold bg-opacity-100"
                     )}
                     onClick={() => setFilterOption({ param: "" })}

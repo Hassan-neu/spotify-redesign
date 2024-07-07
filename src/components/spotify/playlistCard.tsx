@@ -1,4 +1,6 @@
+import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export type VariantProp = "album" | "artiste" | "playlist";
@@ -18,7 +20,10 @@ function PlaylistCard({ variant, pinned }: CardProp) {
             ? "before:w-[154px] before:h-[6px] before:bg-[#CCF665] before:bg-opacity-30 before:rounded-t-[7.25px] before:-top-[8px] before:absolute before:left-1/2 before:-translate-x-1/2 after:w-[133px] after:h-[3px] after:bg-[#CCF665] after:bg-opacity-15 after:rounded-t-[7.25px] after:-top-[13px] after:absolute after:left-1/2 after:-translate-x-1/2"
             : "";
     return (
-        <div className="w-[170px] max-h-[253px] flex flex-col gap-[6px] relative rounded-[7.25px]">
+        <Link
+            href={`/${variant}/${crypto.randomUUID()}`}
+            className="w-[170px] max-h-[253px] flex flex-col gap-[6px] relative rounded-[7.25px]"
+        >
             {pinned && (
                 <div
                     className={`z-10 absolute rounded-full bg-primaryBackground top-0 right-0`}
@@ -33,13 +38,14 @@ function PlaylistCard({ variant, pinned }: CardProp) {
             )}
 
             <div className={`${addShadow} relative`}>
-                <Image
-                    src={"/assets/spotify-icons/playlistimage.png"}
-                    alt=""
-                    width={170}
-                    height={170}
-                    className={imageClass}
-                />
+                <div className="w-[170px] h-[170px] relative">
+                    <Image
+                        src="/assets/spotify-icons/playlistimage.png"
+                        fill
+                        alt="playlist"
+                        className={cn(imageClass, "object-cover")}
+                    />
+                </div>
             </div>
 
             <div className="flex flex-col gap-2">
@@ -55,7 +61,7 @@ function PlaylistCard({ variant, pinned }: CardProp) {
                     </div>
                 )}
             </div>
-        </div>
+        </Link>
     );
 }
 
