@@ -5,8 +5,27 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useState } from "react";
-function ProjectCard({ activeview }: { activeview: string }) {
+type imageType = {
+    url: string;
+    height: number;
+    width: number;
+};
+type Album = {
+    id: string;
+    name: string;
+    total_tracks: number;
+    release_date: string;
+    images: imageType[];
+};
+function ProjectCard({
+    activeview,
+    data,
+}: {
+    activeview: string;
+    data: Album;
+}) {
     const [showTracks, setShowTracks] = useState<boolean>(false);
+    const { images, id, name, total_tracks, release_date } = data;
     return (
         <>
             <div
@@ -26,8 +45,8 @@ function ProjectCard({ activeview }: { activeview: string }) {
                     )}
                 >
                     <Image
-                        src={"/assets/spotify-icons/playlistimage.png"}
-                        alt=""
+                        src={images[0].url}
+                        alt={name}
                         fill
                         className={"object-cover"}
                     />
@@ -41,10 +60,10 @@ function ProjectCard({ activeview }: { activeview: string }) {
                         )}
                     >
                         <Link
-                            href={`/album/rockmix`}
+                            href={`/album/${id}`}
                             className="font-medium text-primaryForeground tracking-wide"
                         >
-                            Rock Mix
+                            {name}
                         </Link>
                         <span
                             className={cn(
@@ -52,7 +71,7 @@ function ProjectCard({ activeview }: { activeview: string }) {
                                 activeview == "list" ? "hidden" : "block"
                             )}
                         >
-                            50
+                            {total_tracks}
                         </span>
                     </div>
                     <div
@@ -61,14 +80,14 @@ function ProjectCard({ activeview }: { activeview: string }) {
                             activeview == "list" ? "hidden" : "block"
                         )}
                     >
-                        2002
+                        {release_date.split("-")[0]}
                     </div>
                     {activeview == "list" && (
                         <>
                             <div className="text-secondaryForeground text-xs flex items-center gap-[10px]">
-                                <span>2023</span>
+                                <span>{release_date.split("-")[0]}</span>
                                 <span className="w-[3px] h-[3px] rounded-full bg-secondaryForeground"></span>
-                                <span>22 songs</span>
+                                <span>{total_tracks} songs</span>
                                 <span className="w-[3px] h-[3px] rounded-full bg-secondaryForeground"></span>
                                 <span>1 hr 41 min</span>
                             </div>

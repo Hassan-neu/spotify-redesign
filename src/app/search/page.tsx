@@ -13,22 +13,28 @@ function Search({
                     <p className="font-bold text-xl">Browse all</p>
                 </div>
                 <div className="flex flex-col gap-5">
+                    <div className="text-primaryForeground text-xl shadow-[0_4px_4px_0_#0000] font-bold capitalize">
+                        Discover
+                    </div>
                     <HomePlaylists
                         length={10}
-                        variant="Discover"
-                        showText={false}
+                        variant="playlist"
                         hasMore={false}
                     />
+                    <div className="text-primaryForeground text-xl shadow-[0_4px_4px_0_#0000] font-bold capitalize">
+                        Genres
+                    </div>
                     <HomePlaylists
                         length={10}
-                        variant="Genres"
-                        showText={false}
+                        variant="playlist"
                         hasMore={false}
                     />
+                    <div className="text-primaryForeground text-xl shadow-[0_4px_4px_0_#0000] font-bold capitalize">
+                        Mood and Activity
+                    </div>
                     <HomePlaylists
                         length={10}
-                        variant="Mood and Activity"
-                        showText={false}
+                        variant="playlist"
                         hasMore={false}
                     />
                 </div>

@@ -14,9 +14,77 @@ export const navLinks: NavLink[] = [
     },
     {
         id: 3,
-        href: "/#discover",
+        href: "/discover",
         icon: "/assets/spotify-icons/Discover.png",
         label: "Discover",
+    },
+];
+export const discoverMenu: NavLink[] = [
+    {
+        id: 1,
+        href: "music",
+        icon: "/assets/spotify-icons/library.png",
+        label: "Music",
+    },
+    {
+        id: 2,
+        href: "edm",
+        icon: "/assets/spotify-icons/home.png",
+        label: "EDM",
+    },
+    {
+        id: 3,
+        href: "indie",
+        icon: "/assets/spotify-icons/Discover.png",
+        label: "Indie",
+    },
+    {
+        id: 3,
+        href: "pop",
+        icon: "/assets/spotify-icons/Discover.png",
+        label: "Pop",
+    },
+    {
+        id: 3,
+        href: "rock",
+        icon: "/assets/spotify-icons/Discover.png",
+        label: "Rock",
+    },
+    {
+        id: 3,
+        href: "alt rock",
+        icon: "/assets/spotify-icons/Discover.png",
+        label: "Alt Rock",
+    },
+    {
+        id: 3,
+        href: "country",
+        icon: "/assets/spotify-icons/Discover.png",
+        label: "Country",
+    },
+    {
+        id: 3,
+        href: "r&b",
+        icon: "/assets/spotify-icons/Discover.png",
+        label: "R&B",
+    },
+    {
+        id: 3,
+        href: "hip-hop",
+        icon: "/assets/spotify-icons/Discover.png",
+        label: "Hip-Hop",
+    },
+    {
+        id: 3,
+        href: "podcast",
+        icon: "/assets/spotify-icons/Discover.png",
+        label: "Podcast",
+    },
+    {
+        id: 3,
+        href: "audiobook",
+        icon: "/assets/spotify-icons/Discover.png",
+        label: "Audiobooks",
     },
 ];
 
