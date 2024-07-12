@@ -5,8 +5,8 @@ import ArtistePick from "./artistepick";
 function Home({ artiste }: { artiste: string }) {
     return (
         <div className="flex gap-[47px] px-[25px] py-[40px]">
-            <MostPlayed />
-            <ArtistePick artiste={artiste} />
+            <MostPlayed id={artiste} />
+            <ArtistePick id={artiste} />
         </div>
     );
 }

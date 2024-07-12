@@ -1,13 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
-function TrackAction() {
+import { Album, Track as TrackType } from "@/utils/types";
+import { getTrack } from "@/actions/tracks";
+import { convertTIme } from "@/utils/timeconvert";
+import Contributors from "../album/contributors";
+type Track = TrackType & { album: Album };
+async function TrackAction({ id }: { id: string }) {
+    const trackDetails: Track = await getTrack({ id });
+    const {
+        album: { images, release_date },
+        artists,
+        duration_ms,
+        name,
+    } = trackDetails;
     return (
         <div className="flex gap-[62px] px-[37px] pt-[37px] pb-[41px]  bg-secondaryForeground bg-opacity-20">
             <div className="w-[500px] h-[500px] relative rounded-[10px] overflow-clip">
                 <Image
-                    src={"/assets/spotify-icons/kanye-west.jpg"}
+                    src={images[0]["url"]}
                     alt="album cover"
                     fill
                     className="object-cover"
@@ -16,11 +27,11 @@ function TrackAction() {
             <div className="flex flex-col">
                 <div className="flex flex-col gap-5">
                     <div className="font-bold text-4xl text-primaryForeground">
-                        Album title
+                        {name}
                     </div>
                     <div className="text-secondaryForeground text-sm flex items-center gap-[10px]">
                         <Link
-                            href={"/artiste/Kanye West"}
+                            href={`/artiste/${artists[0].id}`}
                             className="text-primaryForeground font-medium flex items-center gap-[5px]"
                         >
                             <div className="w-[24px] h-[24px] relative">
@@ -31,14 +42,12 @@ function TrackAction() {
                                     className="object-cover"
                                 />
                             </div>
-                            <span>Kanye West</span>
+                            <span>{artists[0].name}</span>
                         </Link>
                         <span className="w-[3px] h-[3px] rounded-full bg-secondaryForeground"></span>
-                        <span>2023</span>
+                        <span>{release_date.split("-")[0]}</span>
                         <span className="w-[3px] h-[3px] rounded-full bg-secondaryForeground"></span>
-                        <span>22 songs</span>
-                        <span className="w-[3px] h-[3px] rounded-full bg-secondaryForeground"></span>
-                        <span>1 hr 41 min</span>
+                        <span>{convertTIme(duration_ms)}</span>
                     </div>
                     <div className="flex gap-[14px]">
                         <button>
@@ -115,54 +124,9 @@ function TrackAction() {
                         ))}
                     </div>
                     <div className="flex flex-col gap-[15px]">
-                        <Link
-                            href={`/artiste/pharell williams`}
-                            className="flex gap-[20px] items-center"
-                        >
-                            <div className="w-[61px] h-[61px] rounded-full overflow-clip relative">
-                                <Image
-                                    src="/assets/spotify-icons/kanye-west.jpg"
-                                    fill
-                                    alt="artiste-cover"
-                                    className="object-cover"
-                                />
-                            </div>
-                            <div className="text-sm text-secondaryForeground font-medium">
-                                Pharell Williams
-                            </div>
-                        </Link>
-                        <Link
-                            href={`/artiste/pharell williams`}
-                            className="flex gap-[20px] items-center"
-                        >
-                            <div className="w-[61px] h-[61px] rounded-full overflow-clip relative">
-                                <Image
-                                    src="/assets/spotify-icons/kanye-west.jpg"
-                                    fill
-                                    alt="artiste-cover"
-                                    className="object-cover"
-                                />
-                            </div>
-                            <div className="text-sm text-secondaryForeground font-medium">
-                                Pharell Williams
-                            </div>
-                        </Link>
-                        <Link
-                            href={`/artiste/pharell williams`}
-                            className="flex gap-[20px] items-center"
-                        >
-                            <span className="w-[61px] h-[61px] rounded-full overflow-clip relative">
-                                <Image
-                                    src="/assets/spotify-icons/kanye-west.jpg"
-                                    fill
-                                    alt="artiste-cover"
-                                    className="object-cover"
-                                />
-                            </span>
-                            <div className="text-sm text-secondaryForeground font-medium">
-                                Pharell Williams
-                            </div>
-                        </Link>
+                        {artists.map((artiste) => (
+                            <Contributors key={artiste.id} id={artiste.id} />
+                        ))}
                     </div>
                 </div>
             </div>

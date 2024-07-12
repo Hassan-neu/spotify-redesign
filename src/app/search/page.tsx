@@ -1,4 +1,4 @@
-import HomePlaylists from "@/components/pages/home/homeplaylists";
+import HomePlaylists from "@/components/pages/home/homeitems";
 import React from "react";
 
 function Search({

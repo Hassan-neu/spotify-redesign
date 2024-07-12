@@ -1,6 +1,31 @@
 import React from "react";
 import Image from "next/image";
-function ArtistePick({ artiste }: { artiste: string }) {
+import { getArtiste } from "@/actions/artiste";
+type imageType = {
+    url: string;
+    height: number;
+    width: number;
+};
+type Artiste = {
+    external_urls: {
+        spotify: string;
+    };
+    followers: {
+        href: string;
+        total: number;
+    };
+    genres: string[];
+    href: string;
+    id: string;
+    images: imageType[];
+    name: string;
+    popularity: number;
+    type: string;
+    uri: string;
+};
+async function ArtistePick({ id }: { id: string }) {
+    const artiste: Artiste = await getArtiste({ id });
+    const { images, name, genres } = artiste;
     return (
         <div className="flex flex-col gap-[20px] w-[320px]">
             <div className="text-primaryForeground text-xl self-start font-semibold">
@@ -9,23 +34,23 @@ function ArtistePick({ artiste }: { artiste: string }) {
             <div className="flex flex-col gap-[30px] w-[320px] items-center">
                 <div className="w-[314px] h-[150px] rounded-[10px] bg-[#18191E] bg-opacity-30 pl-[13px] flex items-center">
                     <div className="flex gap-[13px]">
-                        <div className="w-[120px] h-[120px] rounded-[5.12px] overflow-clip relative">
+                        <div className="w-[120px] h-[120px] rounded-[5.12px] overflow-clip relative shrink-0">
                             <Image
-                                src={"/assets/spotify-icons/kanye-west.jpg"}
+                                src={images[0].url}
                                 fill
                                 alt="artist-pick-cover"
                                 className="object-cover"
                             />
                         </div>
                         <div className="text-sm font-medium text-primaryForeground">
-                            Listen to the Best of {decodeURIComponent(artiste)}
+                            Listen to the Best of {name}
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-col gap-[30px]">
                     <div className="w-[320px] h-[320px] rounded-[10px] overflow-clip relative">
                         <Image
-                            src={"/assets/spotify-icons/kanye-west.jpg"}
+                            src={images[0].url}
                             fill
                             alt="artist-cover"
                             className="object-cover"
@@ -38,13 +63,7 @@ function ArtistePick({ artiste }: { artiste: string }) {
                         iconic acts...
                     </div>
                     <div className="flex gap-[10px] flex-wrap">
-                        {[
-                            "funk",
-                            "electronic music",
-                            "disco",
-                            "soft rock",
-                            "progressive pop",
-                        ].map((item, indx) => (
+                        {genres.map((item, indx) => (
                             <div
                                 key={indx}
                                 className="text-sm text-secondaryForeground rounded-full py-[10px] px-[20px] border-2 border-opacity-25 border-secondaryForeground capitalize"

@@ -2,33 +2,30 @@ import PlaylistCard from "@/components/spotify/playlistCard";
 import { cn } from "@/lib/utils";
 import React from "react";
 import ProjectCard from "./projectcard";
-import { getAlbums } from "@/actions/getAlbums";
-type imageType = {
-    url: string;
-    height: number;
-    width: number;
-};
-type Album = {
-    id: string;
-    name: string;
-    total_tracks: number;
-    release_date: string;
-    images: imageType[];
-};
+import { getAlbums } from "@/actions/albums";
+import { Album } from "@/utils/types";
 
-async function Albums({ activeview = "grid" }: { activeview: string }) {
-    const getArtisteAlbums = await getAlbums();
+async function Albums({
+    activeview = "grid",
+    id,
+    activetab,
+}: {
+    activeview: string;
+    activetab: string;
+    id: string;
+}) {
+    const getArtisteAlbums: Album[] = await getAlbums({ id, activetab });
 
     return (
         <div
             className={cn(
                 "px-[25px] py-[40px]",
                 activeview == "grid"
-                    ? "grid gap-[11px] grid-cols-[repeat(auto-fit,_170px)] auto-rows-auto"
+                    ? "grid gap-[11px] grid-cols-[repeat(auto-fill,_minmax(170px,_1fr))] auto-rows-auto"
                     : "flex flex-col divide-y-2 divide-primaryBackground"
             )}
         >
-            {getArtisteAlbums.map((data: Album) => (
+            {getArtisteAlbums.map((data) => (
                 <ProjectCard
                     key={data.id}
                     data={data}

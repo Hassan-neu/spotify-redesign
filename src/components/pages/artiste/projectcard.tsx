@@ -33,14 +33,14 @@ function ProjectCard({
                     "flex",
                     activeview == "list"
                         ? "flex-row gap-[18px] py-[30px]"
-                        : "flex-col w-[170px] max-h-[253px] gap-[6px]"
+                        : "flex-col max-h-[253px] gap-[6px]"
                 )}
             >
                 <div
                     className={cn(
                         `relative rounded-[7.25px] overflow-clip`,
                         activeview == "grid"
-                            ? "w-[170px] h-[170px]"
+                            ? "w-[170px] min-w-full h-[170px]"
                             : "w-[130px] h-[130px]"
                     )}
                 >
@@ -61,7 +61,7 @@ function ProjectCard({
                     >
                         <Link
                             href={`/album/${id}`}
-                            className="font-medium text-primaryForeground tracking-wide"
+                            className="font-medium text-primaryForeground tracking-wide truncate text-ellipsis"
                         >
                             {name}
                         </Link>
@@ -194,12 +194,6 @@ function ProjectCard({
                     ))}
                 </div>
             )}
-
-            {/* {activeview == "list" &&
-                showTracks &&
-                Array.from({ length: 5 }, (_v, indx) => (
-                    <Track key={indx} indx={indx} />
-                ))} */}
         </>
     );
 }

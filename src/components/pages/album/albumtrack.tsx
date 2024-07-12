@@ -1,31 +1,11 @@
-import { getAlbumTracks } from "@/actions/getAlbumTracks";
+import { convertTIme } from "@/utils/timeconvert";
+import { Track } from "@/utils/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-type artist = {
-    href: string;
-    id: string;
-    name: string;
-    type: string;
-    uri: string;
-};
-type track = {
-    artists: artist[];
-    id: string;
-    name: string;
-    duration_ms: number;
-    track_number: number;
-};
-async function AlbumTrack({ data }: { data: track }) {
-    const { artists, duration_ms, name, track_number } = data;
-    const toseconds = duration_ms / 1000;
-    const toHours = Math.floor(toseconds / 3600);
-    const remHours = toseconds % 3600;
-    const toMinutes = Math.floor(remHours / 60);
-    const remMinutes = Math.floor(toseconds % 60);
-    const duration = `${toHours ? toHours + ":" : ""}${
-        toMinutes ? toMinutes + ":" : ""
-    }${remMinutes ? remMinutes.toString().padStart(2, "0") : ""}`;
+
+async function AlbumTrack({ data }: { data: Track }) {
+    const { id, artists, duration_ms, name, track_number } = data;
     return (
         <div className="group/track hover:bg-secondaryForeground hover:bg-opacity-10 rounded-[10px]  py-2 px-[10px] flex gap-5 justify-between items-center">
             <div className="flex items-center gap-[10px]">
@@ -34,13 +14,17 @@ async function AlbumTrack({ data }: { data: track }) {
                 </span>
                 <div className="flex gap-[10px] items-center">
                     <div className="flex flex-col gap-1">
-                        <span className="text-base font-medium text-primaryForeground">
+                        <Link
+                            href={`/track/${id}`}
+                            className="text-base font-medium text-primaryForeground"
+                        >
                             {name}
-                        </span>
+                        </Link>
                         <div className="text-sm text-secondaryForeground flex items-center gap-[2px]">
-                            {artists.map(({ id, name }) => (
-                                <Link href={id} key={id}>
+                            {artists.map(({ id, name }, index, self) => (
+                                <Link href={`/artiste/${id}`} key={id}>
                                     {name}
+                                    {self.length - 1 == index ? "" : ", "}
                                 </Link>
                             ))}
                         </div>
@@ -49,7 +33,7 @@ async function AlbumTrack({ data }: { data: track }) {
             </div>
             <div className="flex items-center gap-5">
                 <span className="text-sm text-secondaryForeground">
-                    {duration}
+                    {convertTIme(duration_ms)}
                 </span>
                 <div className="flex items-center gap-2">
                     <button>

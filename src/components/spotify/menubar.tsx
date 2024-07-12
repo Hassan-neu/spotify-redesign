@@ -71,7 +71,7 @@ function Menubar() {
                     {userNav.map((nav) => (
                         <button
                             key={nav.id}
-                            // onClick={() => nav?.btnFunc(openFriendsTab)}
+                            onClick={() => nav?.btnFunc(openFriendsTab)}
                         >
                             <Image
                                 src={nav.icon}

@@ -1,22 +1,10 @@
 import React from "react";
 import AlbumTrack from "./albumtrack";
-import { getAlbumTracks } from "@/actions/getAlbumTracks";
-type artist = {
-    href: string;
-    id: string;
-    name: string;
-    type: string;
-    uri: string;
-};
-type track = {
-    artists: artist[];
-    id: string;
-    name: string;
-    duration_ms: number;
-    track_number: number;
-};
+import { getAlbumTracks } from "@/actions/albums";
+import { Track } from "@/utils/types";
+
 async function AlbumTracks({ id }: { id: string }) {
-    const albumTracks: track[] = await getAlbumTracks({ id });
+    const albumTracks: Track[] = await getAlbumTracks({ id });
     return (
         <div className={"flex flex-col gap-[5px]"}>
             {albumTracks.map((data) => (

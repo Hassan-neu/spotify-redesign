@@ -1,10 +1,11 @@
-import { getFeaturedPlaylists, getLatestRelease } from "@/actions/albums";
+import { getLatestRelease } from "@/actions/albums";
 import PlaylistCard from "@/components/spotify/playlistCard";
 import { Album } from "@/utils/types";
 import React from "react";
 
-async function HomePlaylists() {
-    const latest: Album[] = await getFeaturedPlaylists();
+async function HomeAlbums() {
+    const latest: Album[] = await getLatestRelease();
+
     return (
         <>
             {latest.map((item) => (
@@ -14,4 +15,4 @@ async function HomePlaylists() {
     );
 }
 
-export default HomePlaylists;
+export default HomeAlbums;

@@ -54,21 +54,18 @@ function Tracklyrics() {
                 </div>
                 <div className="flex gap-6">
                     <div className="text-primaryForeground text-[28px] font- text-pretty">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Placeat aut accusantium repellat unde non
-                        temporibus, quaerat doloribus. Repellat quasi
-                        exercitationem eos reiciendis nisi eius consequatur
-                        nostrum molestias odio, hic esse qui ad? Qui molestias,
-                        doloribus excepturi unde a hic iste consectetur minima
-                        soluta laudantium saepe minus labore voluptatem
-                        laboriosam dolore harum molestiae sint cumque omnis
-                        fugiat nisi illo placeat? Illum rem unde reiciendis
-                        nesciunt ex provident neque repellat, maiores
-                        recusandae, ad velit. Quae commodi modi at, ipsam
-                        recusandae deserunt totam praesentium excepturi
-                        repudiandae esse corrupti, in voluptate. Fugit ipsam
-                        laudantium commodi, quisquam, id, necessitatibus
-                        eligendi ad nulla sit cumque ipsum!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Dolorem rem impedit voluptates veniam beatae architecto
+                        fugit blanditiis praesentium facilis voluptatibus
+                        reprehenderit quisquam saepe cumque aliquid, eos, nemo
+                        tempore, facere iste illum! Ea in eius, autem
+                        repudiandae eos sint quis. Quasi, suscipit commodi
+                        voluptatum dolorem magni hic, vero dolores itaque,
+                        libero exercitationem fugiat praesentium fugit dicta
+                        nulla deserunt quia! Vel reiciendis assumenda, tenetur
+                        voluptatum sit quam tempore culpa accusamus quisquam
+                        blanditiis ducimus numquam, commodi corporis recusandae
+                        earum error vero necessitatibus voluptas.
                     </div>
 
                     <div

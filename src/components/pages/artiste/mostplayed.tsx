@@ -1,15 +1,19 @@
 import React from "react";
 import Track from "../../spotify/track";
+import { getTopTracks } from "@/actions/artiste";
+import { Album, Track as TrackType } from "@/utils/types";
+type Tracks = TrackType & { album: Album };
+async function MostPlayed({ id }: { id: string }) {
+    const topTracks: Tracks[] = await getTopTracks({ id });
 
-function MostPlayed() {
     return (
         <div className="flex flex-col gap-[20px] grow">
             <div className="text-primaryForeground text-xl self-start font-semibold">
-                Your most played
+                Top Tracks
             </div>
             <div className="flex flex-col gap-[5px]">
-                {Array.from({ length: 6 }, (_v, indx) => (
-                    <Track key={indx} indx={indx} />
+                {topTracks.map((item, indx) => (
+                    <Track key={item.id} indx={indx} data={item} />
                 ))}
             </div>
         </div>
