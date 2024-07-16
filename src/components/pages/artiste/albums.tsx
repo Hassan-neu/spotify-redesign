@@ -21,8 +21,9 @@ async function Albums({
             className={cn(
                 "px-[25px] py-[40px]",
                 activeview == "grid"
-                    ? "grid gap-[11px] grid-cols-[repeat(auto-fill,_minmax(170px,_1fr))] auto-rows-auto"
-                    : "flex flex-col divide-y-2 divide-primaryBackground"
+                    ? "grid gap-[11px] grid-cols-[repeat(auto-fill,_minmax(150px,_1fr))] auto-rows-auto"
+                    : activeview == "list" &&
+                          "flex flex-col divide-y-2 divide-primaryBackground"
             )}
         >
             {getArtisteAlbums.map((data) => (

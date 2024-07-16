@@ -14,7 +14,7 @@ export async function getPlaylistTracks({ id }: { id: string }) {
     const { access_token } = await token_access.json();
 
     const response = await fetch(
-        `https://api.spotify.com/v1/playlists/${id}/tracks?fields=items(track(name,href,id,artists.id,artists.name,duration_ms,album(name,href)))`,
+        `https://api.spotify.com/v1/playlists/${id}/tracks?fields=items(track(album(name,id,images),name,id,duration_ms,artists))`,
         {
             headers: {
                 Authorization: `Bearer ${access_token}`,
@@ -22,7 +22,7 @@ export async function getPlaylistTracks({ id }: { id: string }) {
         }
     );
     const data = await response.json();
-    return data;
+    return data.items;
 }
 export async function getPlaylistInfo({ id }: { id: string }) {
     const token_access = await fetch(`https://accounts.spotify.com/api/token`, {
@@ -39,7 +39,7 @@ export async function getPlaylistInfo({ id }: { id: string }) {
     const { access_token } = await token_access.json();
 
     const response = await fetch(
-        `https://api.spotify.com/v1/playlists/${id}?fields=id,name,owner(id,type),tracks(total,items(track(duration_ms))))`,
+        `https://api.spotify.com/v1/playlists/${id}?fields=id,name,description,images,owner(id,type),tracks(total,items.track(duration_ms))`,
         {
             headers: {
                 Authorization: `Bearer ${access_token}`,
@@ -47,6 +47,6 @@ export async function getPlaylistInfo({ id }: { id: string }) {
         }
     );
     const data = await response.json();
-    console.log(data);
+
     return data;
 }

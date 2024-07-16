@@ -7,11 +7,11 @@ import React from "react";
 async function AlbumTrack({ data }: { data: Track }) {
     const { id, artists, duration_ms, name, track_number } = data;
     return (
-        <div className="group/track hover:bg-secondaryForeground hover:bg-opacity-10 rounded-[10px]  py-2 px-[10px] flex gap-5 justify-between items-center">
+        <div className="group/track hover:bg-secondaryForeground hover:bg-opacity-10 rounded-[10px]  py-2 px-[10px] grid grid-cols-[35px,_350px,_auto] gap-[10px] items-center">
+            <span className="flex justify-center items-center text-base font-medium text-secondaryForeground w-10">
+                {track_number}
+            </span>
             <div className="flex items-center gap-[10px]">
-                <span className="flex justify-center items-center text-base font-medium text-secondaryForeground w-10">
-                    {track_number}
-                </span>
                 <div className="flex gap-[10px] items-center">
                     <div className="flex flex-col gap-1">
                         <Link

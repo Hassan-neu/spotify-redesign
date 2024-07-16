@@ -36,14 +36,12 @@ function Page({ params: { album } }: { params: { album: string } }) {
                     <AlbumActions id={album} />
 
                     <div className="flex flex-col gap-[20px]">
-                        <div className="flex items-center text-secondaryForeground gap-[10px] border-b-2 border-secondaryForeground border-opacity-15 text-sm px-[10px] pb-3">
+                        <div className="grid grid-cols-[35px,_350px,_350px] items-center text-secondaryForeground gap-[10px] border-b-2 border-secondaryForeground border-opacity-15 text-sm px-[10px] pb-3">
                             <span className="w-10 flex justify-center items-center">
                                 #
                             </span>
-                            <div className="flex items-center gap-40 grow">
-                                <span>Title</span>
-                                <span className="mx-auto">Duration</span>
-                            </div>
+                            <span>Title</span>
+                            <span>Duration</span>
                         </div>
                         <AlbumTracks id={album} />
                     </div>

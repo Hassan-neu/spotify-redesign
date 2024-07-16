@@ -52,8 +52,15 @@ async function ArtistePage({
     params: { artiste: string };
     searchParams: { [key: string]: string };
 }) {
+    const albumsArrays = [
+        "albums",
+        "compilations",
+        "singles and ep",
+        "feature and more",
+    ];
+
     return (
-        <div className="border rounded-[10px] border-secondaryBackground overflow-scroll hide-scroll">
+        <div className="border rounded-[10px] border-secondaryBackground overflow-scroll hide-scroll min-h-screen">
             <ArtisteBanner artiste={artiste} />
             <Suspense fallback={<div>Loadiingggg...</div>}>
                 <ArtisteMenu />
@@ -62,10 +69,10 @@ async function ArtistePage({
                 <Home artiste={artiste} />
             ) : decodeURIComponent(activetab) == "about" ? (
                 <About />
-            ) : decodeURIComponent(activetab) == "albums" ? (
-                <Albums activeview={view} activetab={activetab} id={artiste} />
             ) : (
-                decodeURIComponent(activetab) == "compilation" && (
+                albumsArrays.some(
+                    (item) => decodeURIComponent(activetab) == item
+                ) && (
                     <Albums
                         activeview={view}
                         activetab={activetab}

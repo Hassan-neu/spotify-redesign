@@ -16,8 +16,8 @@ function SideMenu() {
                         <div className="flex gap-[10px] items-center">
                             <Image
                                 src={menu.icon}
-                                width={40.41}
-                                height={40.41}
+                                width={35}
+                                height={35}
                                 alt={`${menu.label}-icon`}
                             />
                             <p className="text-secondaryForeground text-sm">
@@ -27,8 +27,8 @@ function SideMenu() {
                         {menu.collapsible && (
                             <Image
                                 src={"/assets/spotify-icons/chevron.png"}
-                                width={40.41}
-                                height={40.41}
+                                width={35}
+                                height={35}
                                 className="rotate-90"
                                 alt={`${menu.label}-open`}
                             />

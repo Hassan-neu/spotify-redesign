@@ -5,7 +5,7 @@ import { useSpotifyContext } from "@/utils/store/store";
 function Friends() {
     const closeFriendsTab = useSpotifyContext((prev) => prev.closeFriendsTab);
     return (
-        <div className="px-[21px] py-5 rounded-[10px] w-[358px] border border-secondaryBackground overflow-scroll hide-scroll">
+        <div className="px-[21px] py-5 rounded-[10px] w-[313px] border border-secondaryBackground overflow-scroll hide-scroll">
             <div className="flex flex-col gap-[33px]">
                 <div className="flex justify-between items-center">
                     <h2 className="font-medium text-sm text-primaryForeground">

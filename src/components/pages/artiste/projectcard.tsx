@@ -40,7 +40,7 @@ function ProjectCard({
                     className={cn(
                         `relative rounded-[7.25px] overflow-clip`,
                         activeview == "grid"
-                            ? "w-[170px] min-w-full h-[170px]"
+                            ? "w-[150px] min-w-full h-[150px]"
                             : "w-[130px] h-[130px]"
                     )}
                 >

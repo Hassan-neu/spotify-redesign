@@ -8,20 +8,19 @@ import React from "react";
 
 async function PlaylistActions({ id }: { id: string }) {
     const playlist: Playlist = await getPlaylistInfo({ id });
-    console.log(playlist);
-    // const {
-    //     id: playlist_id,
-    //     name,
-    //     owner: { id: owner_name },
-    //     tracks: { total, items },
-    // } = playlist;
-    // const time = items
-    //     .map((item) => item.duration_ms)
-    //     .reduce((a, b) => a + b, 0);
+    const {
+        id: playlist_id,
+        name,
+        owner: { id: owner_name },
+        tracks: { total, items },
+    } = playlist;
+    const time = items
+        .flatMap((item) => item.track.duration_ms)
+        .reduce((a, b) => a + b, 0);
+
     return (
         <div className="flex flex-col gap-[20px] px-3">
-            hello
-            {/* <div className="font-black text-4xl text-primaryForeground">
+            <div className="font-black text-4xl text-primaryForeground">
                 {name}
             </div>
             <div className="text-secondaryForeground text-sm flex items-center gap-[10px]">
@@ -32,7 +31,7 @@ async function PlaylistActions({ id }: { id: string }) {
                         width={24}
                         height={24}
                     />
-                    <span>{owner_name}</span>
+                    <span className="capitalize">{owner_name}</span>
                 </div>
                 <span className="w-[3px] h-[3px] rounded-full bg-secondaryForeground"></span>
                 <span>{total} songs</span>
@@ -104,7 +103,7 @@ async function PlaylistActions({ id }: { id: string }) {
                         alt="button"
                     />
                 </button>
-            </div> */}
+            </div>
         </div>
     );
 }

@@ -26,7 +26,7 @@ function Menubar() {
     }
     return (
         <div className="flex justify-between col-[1/-1] bg-mainBackground mb-[3px]">
-            <div className="flex shrink-0 [&>:nth-child(1)]:w-[262px] [&>:nth-child(2)]:w-[210px] [&>:nth-child(3)]:w-[210px] [&>:nth-child(4)]:w-[350px]">
+            <div className="flex shrink-0 [&>:nth-child(1)]:w-[229px] [&>:nth-child(2)]:w-[184px] [&>:nth-child(3)]:w-[184px] [&>:nth-child(4)]:w-[306px]">
                 {navLinks.map((link, indx) => (
                     <Link
                         key={link.id}
@@ -40,8 +40,8 @@ function Menubar() {
                         <div className="flex justify-center items-center">
                             <Image
                                 src={link.icon}
-                                width={40.41}
-                                height={40.41}
+                                width={35}
+                                height={35}
                                 alt={`${link.label}-icon`}
                             />
                         </div>
@@ -54,8 +54,8 @@ function Menubar() {
                     <div className="flex justify-center items-center">
                         <Image
                             src={"/assets/spotify-icons/Search.png"}
-                            width={40.41}
-                            height={40.41}
+                            width={35}
+                            height={35}
                             alt={`search-icon`}
                         />
                     </div>
@@ -75,8 +75,8 @@ function Menubar() {
                         >
                             <Image
                                 src={nav.icon}
-                                width={40.41}
-                                height={40.41}
+                                width={35}
+                                height={35}
                                 alt={`${nav.label}-icon`}
                             />
                         </button>

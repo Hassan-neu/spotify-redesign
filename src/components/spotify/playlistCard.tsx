@@ -26,7 +26,7 @@ function PlaylistCard({ variant, pinned, data }: CardProp) {
         <Link
             href={`/${type}/${id}`}
             className={cn(
-                `w-[170px] max-h-[253px] flex flex-col gap-[6px] relative rounded-[7.25px]`,
+                `w-[150px] max-h-[253px] flex flex-col gap-[6px] relative rounded-[7.25px]`,
                 addShadow
             )}
         >
@@ -44,7 +44,7 @@ function PlaylistCard({ variant, pinned, data }: CardProp) {
             )}
 
             <div className={cn(`relative`, addShadow)}>
-                <div className="w-[170px] h-[170px] relative">
+                <div className="w-[150px] h-[150px] relative">
                     <Image
                         src={images[0]["url"]}
                         fill

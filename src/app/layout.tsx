@@ -48,7 +48,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${myFont.className} bg-mainBackground`}>
-                <div className="grid grid-cols-[259px,_auto] grid-rows-[54px,_calc(100vh_-_(calc(81px_+_54px))),_81px] bg-mainBackground">
+                <div className="grid grid-cols-[227px,_auto] grid-rows-[54px,_calc(100vh_-_(calc(81px_+_54px))),_81px] bg-mainBackground">
                     <Menubar />
                     <SideMenu />
                     <div className="col-[2/-1] row-[2/3] mr-[7px] overflow-scroll hide-scroll grid grid-cols-[1fr,_auto] gap-[5px] auto-rows-auto">

@@ -1,12 +1,7 @@
-import AlbumActions from "@/components/pages/album/albumactions";
-import AlbumInfo from "@/components/pages/album/albuminfo";
-import AlbumTrack from "@/components/pages/album/albumtrack";
 import PlaylistActions from "@/components/pages/playlist/playlistactions";
+import PlaylistInfo from "@/components/pages/playlist/playlistinfo";
 import PlaylistTracks from "@/components/pages/playlist/playlisttracks";
-import Track from "@/components/spotify/track";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 function Page({ params: { id } }: { params: { id: string } }) {
@@ -16,21 +11,20 @@ function Page({ params: { id } }: { params: { id: string } }) {
                 <div className="grow flex flex-col gap-[30px]">
                     <PlaylistActions id={id} />
                     <div className="flex flex-col gap-[20px]">
-                        <div className="flex items-center text-secondaryForeground gap-[10px] border-b-2 border-secondaryForeground border-opacity-15 text-sm px-[10px] pb-3">
-                            <span className="w-10 flex justify-center items-center">
+                        <div className="grid grid-cols-[35px,_260px,_260px,_1fr] text-secondaryForeground gap-[10px] border-b-2 border-secondaryForeground border-opacity-15 text-sm px-[10px] pb-3">
+                            <span className="flex justify-center items-center">
                                 #
                             </span>
-                            <div className="flex items-center gap-40 grow">
-                                <span>Title</span>
-                                <span className="mx-auto">Duration</span>
-                            </div>
+                            <span>Title</span>
+                            <span>Album</span>
+                            <span>Duration</span>
                         </div>
                         <div className={cn("flex flex-col gap-[5px]")}>
                             <PlaylistTracks id={id} />
                         </div>
                     </div>
                 </div>
-                {/* <AlbumInfo /> */}
+                <PlaylistInfo id={id} />
             </div>
         </div>
     );

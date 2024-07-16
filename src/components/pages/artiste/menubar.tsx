@@ -96,9 +96,9 @@ function ArtisteMenu() {
                     <button onClick={() => setActiveView("grid")}>
                         <Image
                             src={
-                                activeView == "grid"
-                                    ? "/assets/spotify-icons/grid-white.png"
-                                    : "/assets/spotify-icons/grid.png"
+                                activeView == "list"
+                                    ? "/assets/spotify-icons/grid.png"
+                                    : "/assets/spotify-icons/grid-white.png"
                             }
                             width={37.3}
                             height={37.3}

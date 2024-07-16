@@ -27,22 +27,23 @@ export interface Track {
     track_number: number;
 }
 export interface PlaylistTrack {
-    artists: Artiste[];
-    id: string;
-    name: string;
-    duration_ms: number;
     track: {
         album: {
-            href: string;
             id: string;
             name: string;
             images: imageType[];
         };
+        name: string;
+        id: string;
+        duration_ms: number;
+        artists: Artiste[];
     };
 }
 export type Playlist = {
     id: string;
     name: string;
+    description: string;
+    images: imageType[];
     owner: {
         id: string;
         type: string;
@@ -50,7 +51,9 @@ export type Playlist = {
     tracks: {
         total: number;
         items: {
-            duration_ms: number;
+            track: {
+                duration_ms: number;
+            };
         }[];
     };
     // description?: string;

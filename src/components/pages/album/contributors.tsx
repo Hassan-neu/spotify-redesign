@@ -33,14 +33,19 @@ async function Contributors({ id }: { id: string }) {
             href={`/artiste/${id}`}
             className="flex gap-[20px] items-center"
         >
-            <div className="w-[61px] h-[61px] rounded-full overflow-clip relative">
-                <Image
-                    src={images[0].url}
-                    fill
-                    alt={name}
-                    className="object-cover"
-                />
-            </div>
+            {!images.length ? (
+                <div className="w-[53px] h-[53px] rounded-full overflow-clip relative bg-primaryForeground"></div>
+            ) : (
+                <div className="w-[53px] h-[53px] rounded-full overflow-clip relative">
+                    <Image
+                        src={images[0].url}
+                        fill
+                        alt={name}
+                        className="object-cover"
+                    />
+                </div>
+            )}
+
             <div className="text-sm text-secondaryForeground font-medium">
                 {name}
             </div>

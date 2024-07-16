@@ -16,7 +16,7 @@ async function TrackAction({ id }: { id: string }) {
     } = trackDetails;
     return (
         <div className="flex gap-[62px] px-[37px] pt-[37px] pb-[41px]  bg-secondaryForeground bg-opacity-20">
-            <div className="w-[500px] h-[500px] relative rounded-[10px] overflow-clip">
+            <div className="w-[438px] h-[438px] relative rounded-[10px] overflow-clip">
                 <Image
                     src={images[0]["url"]}
                     alt="album cover"

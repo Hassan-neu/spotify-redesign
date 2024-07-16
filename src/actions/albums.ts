@@ -18,10 +18,16 @@ export async function getAlbums({
         body: `grant_type=client_credentials&client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`,
     });
     const { access_token } = await token_access.json();
-    console.log(activetab);
+    const decodedURI = decodeURIComponent(activetab);
     const response = await fetch(
         `https://api.spotify.com/v1/artists/${id}/albums?include_groups=${
-            activetab == "albums" ? "album" : "compilation"
+            decodedURI == "albums"
+                ? "album"
+                : decodedURI == "compilation"
+                ? "compilation"
+                : decodedURI == "feature and more"
+                ? "appears_on"
+                : "single"
         }`,
         {
             headers: {

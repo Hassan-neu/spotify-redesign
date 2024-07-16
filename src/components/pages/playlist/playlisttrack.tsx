@@ -12,47 +12,59 @@ async function PlaylistTrack({
     indx: number;
 }) {
     const {
-        id,
-        artists,
-        duration_ms,
-        name,
         track: {
             album: { id: album_id, images, name: album_name },
+            id,
+            artists,
+            duration_ms,
+            name,
         },
     } = data;
     return (
-        <div className="group/track hover:bg-secondaryForeground hover:bg-opacity-10 rounded-[10px]  py-2 px-[10px] flex gap-5 justify-between items-center">
-            <div className="flex items-center gap-[10px]">
-                <span className="flex justify-center items-center text-base font-medium text-secondaryForeground w-10">
-                    {indx + 1}
-                </span>
-                <div className="flex gap-[10px] items-center">
-                    <div className="flex flex-col gap-1">
-                        <Link
-                            href={`/track/${id}`}
-                            className="text-base font-medium text-primaryForeground"
-                        >
-                            {name}
-                        </Link>
-                        <div className="text-sm text-secondaryForeground flex items-center gap-[2px]">
-                            {artists.map(({ id, name }, index, self) => (
-                                <Link href={`/artiste/${id}`} key={id}>
-                                    {name}
-                                    {self.length - 1 == index ? "" : ", "}
-                                </Link>
-                            ))}
-                        </div>
+        <div className="group/track hover:bg-secondaryForeground hover:bg-opacity-10 rounded-[10px]  py-2 px-[10px] grid grid-cols-[35px,_260px,_260px,_1fr] gap-[10px] items-center">
+            <span className="flex justify-center items-center text-base font-medium text-secondaryForeground w-10">
+                {indx + 1}
+            </span>
+
+            <div className="flex gap-[10px] items-center">
+                <div className="w-[51px] h-[51px] relative shrink-0">
+                    <Image
+                        src={images[0].url}
+                        alt={name}
+                        fill
+                        className="object-cover"
+                    />
+                </div>
+                <div className="flex flex-col gap-1 text-sm truncate">
+                    <Link
+                        href={`/track/${id}`}
+                        className="text-base font-medium truncate text-ellipsis text-primaryForeground "
+                    >
+                        {name}
+                    </Link>
+                    <div className="text-sm text-secondaryForeground flex items-center gap-[2px] truncate overflow-ellipsis">
+                        {artists.map(({ id, name }, index, self) => (
+                            <Link
+                                href={`/artiste/${id}`}
+                                key={id}
+                                className="text-ellipsis"
+                            >
+                                {name}
+                                {self.length - 1 == index ? "" : ", "}
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </div>
-            <div className="text-secondaryForeground text-sm">
+
+            <div className="text-secondaryForeground text-sm truncate overflow-ellipsis">
                 <Link href={`/album/${album_id}`}>{album_name}</Link>
             </div>
             <div className="flex items-center gap-5">
                 <span className="text-sm text-secondaryForeground">
                     {convertTIme(duration_ms)}
                 </span>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 shrink-0">
                     <button>
                         <Image
                             src={"/assets/spotify-icons/like-stroke.png"}

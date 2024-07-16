@@ -139,7 +139,7 @@ function HomePlaylists({
                 </div>
             </div>
             <div
-                className="grid grid-cols-[repeat(auto-fit,_minmax(170px,1fr))] grid-flow-col auto-rows-auto overflow-hidden hide-scroll gap-3"
+                className="grid grid-cols-[repeat(auto-fit,_minmax(150px,1fr))] grid-flow-col auto-rows-auto overflow-hidden hide-scroll gap-3"
                 ref={slide}
             >
                 {children}

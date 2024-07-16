@@ -21,8 +21,8 @@ async function AlbumInfo({ id }: { id: string }) {
         );
 
     return (
-        <div className="flex flex-col gap-[30px] w-[30%]">
-            <div className="w-[400px] h-[400px] rounded-[10px] overflow-clip relative">
+        <div className="flex flex-col gap-[30px] w-[350px]">
+            <div className="w-[350px] h-[350px] rounded-[10px] overflow-clip relative">
                 <Image
                     src={images[0].url}
                     fill

@@ -5,3 +5,8 @@
 .hide-scroll::-webkit-scrollbar {
     display: none;
 }
+table,
+th,
+td {
+    border: 1px solid red;
+}

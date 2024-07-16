@@ -20,42 +20,41 @@ function Track({
         album: { images },
     } = data;
     return (
-        <div className="group/track hover:bg-secondaryForeground hover:bg-opacity-10 rounded-[10px]  py-2 px-[10px] flex gap-5 justify-between items-center">
-            <div className="flex items-center gap-[10px]">
-                <span className="text-base font-medium text-secondaryForeground w-10">
-                    {indx + 1}
-                </span>
-                <div className="flex gap-[10px] items-center">
-                    <div className="w-[51px] h-[51px] relative shrink-0">
-                        <Image
-                            src={images[0].url}
-                            fill
-                            alt={"track-cover"}
-                            className="object-cover"
-                        />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                        <Link
-                            href={`/track/${id}`}
-                            className="text-base text-ellipsis font-medium text-primaryForeground"
-                        >
-                            {name}
-                        </Link>
-                        <div>
-                            {artists.map((item, index, self) => (
-                                <Link
-                                    key={item.id}
-                                    href={`/artiste/${item.id}`}
-                                    className="text-sm text-secondaryForeground"
-                                >
-                                    {item.name}
-                                    {self.length - 1 == index ? "" : ", "}
-                                </Link>
-                            ))}
-                        </div>
+        <div className="group/track hover:bg-secondaryForeground hover:bg-opacity-10 rounded-[10px] py-2 px-[10px] grid grid-cols-[35px,_350px,_260px,_1fr] gap-[10px] items-center">
+            <span className="text-base font-medium text-secondaryForeground w-10">
+                {indx + 1}
+            </span>
+            <div className="flex gap-[10px] items-center">
+                <div className="w-[51px] h-[51px] relative shrink-0">
+                    <Image
+                        src={images[0].url}
+                        fill
+                        alt={"track-cover"}
+                        className="object-cover"
+                    />
+                </div>
+                <div className="flex flex-col gap-1 truncate">
+                    <Link
+                        href={`/track/${id}`}
+                        className="text-base truncate text-ellipsis font-medium text-primaryForeground"
+                    >
+                        {name}
+                    </Link>
+                    <div className="text-sm text-secondaryForeground flex items-center gap-[2px] truncate overflow-ellipsis">
+                        {artists.map((item, index, self) => (
+                            <Link
+                                key={item.id}
+                                href={`/artiste/${item.id}`}
+                                className="text-sm text-secondaryForeground text-ellipsis"
+                            >
+                                {item.name}
+                                {self.length - 1 == index ? "" : ", "}
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </div>
+
             <div className="flex items-center gap-5">
                 <span className="group-hover/track:opacity-0 text-sm text-secondaryForeground">
                     {convertTIme(duration_ms)}
