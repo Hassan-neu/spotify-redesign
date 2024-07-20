@@ -1,5 +1,5 @@
 import AlbumInfo from "@/components/pages/album/albuminfo";
-// import Lyrics from "@/components/pages/track/lyrics";
+import Lyrics from "@/components/pages/track/lyrics";
 import TrackAction from "@/components/pages/track/trackaction";
 import Tracklyrics from "@/components/pages/track/tracklyrics";
 import { Metadata, ResolvingMetadata } from "next";
@@ -18,7 +18,7 @@ export async function generateMetadata({
     const trackDetails: Track = await getTrack({ id });
     const { artists, name } = trackDetails;
     return {
-        title: `${name}`,
+        title: `${name} by ${artists.map((item) => item.name).join(", ")}`,
         description: `${name} by ${artists[0].name}`,
     };
 }
@@ -27,7 +27,9 @@ function Track({ params: { id } }: { params: { id: string } }) {
         <div className="border rounded-[10px] border-secondaryBackground overflow-scroll hide-scroll">
             <div className="flex flex-col">
                 <TrackAction id={id} />
-                <Tracklyrics />
+                <Tracklyrics>
+                    <Lyrics id={id} />
+                </Tracklyrics>
                 {/* <Lyrics id={id} /> */}
             </div>
         </div>

@@ -26,13 +26,19 @@ async function Albums({
                           "flex flex-col divide-y-2 divide-primaryBackground"
             )}
         >
-            {getArtisteAlbums.map((data) => (
-                <ProjectCard
-                    key={data.id}
-                    data={data}
-                    activeview={activeview}
-                />
-            ))}
+            {getArtisteAlbums.length ? (
+                getArtisteAlbums.map((data) => (
+                    <ProjectCard
+                        key={data.id}
+                        data={data}
+                        activeview={activeview}
+                    />
+                ))
+            ) : (
+                <div className="place-self-center text-primaryForeground">
+                    No Items Found
+                </div>
+            )}
         </div>
     );
 }

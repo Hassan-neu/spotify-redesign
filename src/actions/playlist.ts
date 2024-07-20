@@ -12,7 +12,7 @@ export async function getPlaylistTracks({ id }: { id: string }) {
     });
 
     const { access_token } = await token_access.json();
-
+    console.log(access_token);
     const response = await fetch(
         `https://api.spotify.com/v1/playlists/${id}/tracks?fields=items(track(album(name,id,images),name,id,duration_ms,artists))`,
         {
@@ -21,8 +21,8 @@ export async function getPlaylistTracks({ id }: { id: string }) {
             },
         }
     );
-    const data = await response.json();
-    return data.items;
+    const { items } = await response.json();
+    return items;
 }
 export async function getPlaylistInfo({ id }: { id: string }) {
     const token_access = await fetch(`https://accounts.spotify.com/api/token`, {
@@ -47,6 +47,5 @@ export async function getPlaylistInfo({ id }: { id: string }) {
         }
     );
     const data = await response.json();
-
     return data;
 }

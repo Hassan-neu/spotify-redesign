@@ -12,15 +12,15 @@ async function AlbumTrack({ data }: { data: Track }) {
                 {track_number}
             </span>
             <div className="flex items-center gap-[10px]">
-                <div className="flex gap-[10px] items-center">
-                    <div className="flex flex-col gap-1">
+                <div className="flex gap-[10px] items-center truncate overflow-ellipsis">
+                    <div className="flex flex-col gap-1 truncate text-ellipsis">
                         <Link
                             href={`/track/${id}`}
-                            className="text-base font-medium text-primaryForeground"
+                            className="text-base font-medium text-primaryForeground truncate text-ellipsis"
                         >
                             {name}
                         </Link>
-                        <div className="text-sm text-secondaryForeground flex items-center gap-[2px]">
+                        <div className="text-sm text-secondaryForeground flex items-center gap-[2px] overflow-ellipsis">
                             {artists.map(({ id, name }, index, self) => (
                                 <Link href={`/artiste/${id}`} key={id}>
                                     {name}

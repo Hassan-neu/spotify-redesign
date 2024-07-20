@@ -2,9 +2,29 @@ import PlaylistActions from "@/components/pages/playlist/playlistactions";
 import PlaylistInfo from "@/components/pages/playlist/playlistinfo";
 import PlaylistTracks from "@/components/pages/playlist/playlisttracks";
 import { cn } from "@/lib/utils";
+import { getServerSession } from "next-auth";
 import React from "react";
-
-function Page({ params: { id } }: { params: { id: string } }) {
+import { Metadata, ResolvingMetadata } from "next";
+import { getPlaylistInfo } from "@/actions/playlist";
+import { Playlist } from "@/utils/types";
+export async function generateMetadata({
+    params: { id },
+}: {
+    params: { id: string };
+    parent: ResolvingMetadata;
+}): Promise<Metadata> {
+    const data: Playlist = await getPlaylistInfo({ id });
+    return {
+        title: `Spotify | ${data.name}`,
+        description: data.description,
+        openGraph: {
+            images: {
+                url: data.images[0].url,
+            },
+        },
+    };
+}
+async function Page({ params: { id } }: { params: { id: string } }) {
     return (
         <div className="border rounded-[10px] bg-[#333842] bg-opacity-45 border-secondaryBackground overflow-scroll hide-scroll">
             <div className="pl-[37px] py-[22px] flex gap-[48px]">

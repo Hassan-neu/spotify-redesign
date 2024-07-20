@@ -9,6 +9,7 @@ async function AlbumActions({ id }: { id: string }) {
     const album: Album = await getAlbum({ id });
 
     const {
+        id: album_id,
         images,
         name,
         genres,
@@ -39,7 +40,7 @@ async function AlbumActions({ id }: { id: string }) {
                 </Link>
                 <span className="w-[3px] h-[3px] rounded-full bg-secondaryForeground"></span>
                 <Link
-                    href={`/artiste/${items.at(0)?.artists.at(0)?.id}`}
+                    href={`/album/${album_id}`}
                     className="text-primaryForeground font-medium flex items-center gap-[5px]"
                 >
                     <Image

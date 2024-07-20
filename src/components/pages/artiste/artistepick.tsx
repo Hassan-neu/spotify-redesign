@@ -27,18 +27,18 @@ async function ArtistePick({ id }: { id: string }) {
     const artiste: Artiste = await getArtiste({ id });
     const { images, name, genres } = artiste;
     return (
-        <div className="flex flex-col gap-[20px] w-[320px]">
+        <div className="flex flex-col gap-[20px] w-[280px]">
             <div className="text-primaryForeground text-xl self-start font-semibold">
                 Artiste Pick
             </div>
             <div className="flex flex-col gap-[30px] w-[320px] items-center">
                 <div className="w-[314px] h-[150px] rounded-[10px] bg-[#18191E] bg-opacity-30 pl-[13px] flex items-center">
                     <div className="flex gap-[13px]">
-                        <div className="w-[120px] h-[120px] rounded-[5.12px] overflow-clip relative shrink-0">
+                        <div className="w-[105px] h-[105px] rounded-[5.12px] overflow-clip relative shrink-0">
                             <Image
                                 src={images[0].url}
                                 fill
-                                alt="artist-pick-cover"
+                                alt={name}
                                 className="object-cover"
                             />
                         </div>
@@ -48,7 +48,7 @@ async function ArtistePick({ id }: { id: string }) {
                     </div>
                 </div>
                 <div className="flex flex-col gap-[30px]">
-                    <div className="w-[320px] h-[320px] rounded-[10px] overflow-clip relative">
+                    <div className="w-[280px] h-[175px] rounded-[10px] overflow-clip relative">
                         <Image
                             src={images[0].url}
                             fill

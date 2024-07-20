@@ -15,9 +15,8 @@ async function PlaylistActions({ id }: { id: string }) {
         tracks: { total, items },
     } = playlist;
     const time = items
-        .flatMap((item) => item.track.duration_ms)
+        .flatMap((item) => item.track?.duration_ms)
         .reduce((a, b) => a + b, 0);
-
     return (
         <div className="flex flex-col gap-[20px] px-3">
             <div className="font-black text-4xl text-primaryForeground">

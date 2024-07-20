@@ -9,7 +9,10 @@ import {
     useSearchParams,
 } from "next/navigation";
 import { useSpotifyContext } from "@/utils/store/store";
+import { signOut, useSession } from "next-auth/react";
 function Menubar() {
+    const { data: session, status } = useSession();
+    console.log(session);
     const searchParams = useSearchParams();
     const { push, replace } = useRouter();
     const currentLayout = useSelectedLayoutSegment();
@@ -81,7 +84,25 @@ function Menubar() {
                             />
                         </button>
                     ))}
-                    <div className="bg-primary w-[40px] h-[40px] rounded-full"></div>
+                    <button onClick={() => signOut({ callbackUrl: "/login" })}>
+                        <Image
+                            src={"/assets/spotify-icons/user.png"}
+                            width={35}
+                            height={35}
+                            alt={`signout-icon`}
+                        />
+                    </button>
+                    <div className="relative w-[40px] h-[40px] rounded-full">
+                        {session?.user?.image ? (
+                            <Image
+                                src={session.user.image}
+                                alt={session?.user?.name!}
+                                fill
+                            />
+                        ) : (
+                            <div className="w-[40px] h-[40px] rounded-full bg-primary"></div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

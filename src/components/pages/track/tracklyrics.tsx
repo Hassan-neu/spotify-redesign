@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 
-function Tracklyrics() {
+function Tracklyrics({ children }: { children: React.ReactNode }) {
     const [showNotes, setShowNotes] = useState(false);
     return (
         <div className="flex flex-col">
@@ -54,18 +54,7 @@ function Tracklyrics() {
                 </div>
                 <div className="flex gap-6">
                     <div className="text-primaryForeground text-[28px] font- text-pretty">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Dolorem rem impedit voluptates veniam beatae architecto
-                        fugit blanditiis praesentium facilis voluptatibus
-                        reprehenderit quisquam saepe cumque aliquid, eos, nemo
-                        tempore, facere iste illum! Ea in eius, autem
-                        repudiandae eos sint quis. Quasi, suscipit commodi
-                        voluptatum dolorem magni hic, vero dolores itaque,
-                        libero exercitationem fugiat praesentium fugit dicta
-                        nulla deserunt quia! Vel reiciendis assumenda, tenetur
-                        voluptatum sit quam tempore culpa accusamus quisquam
-                        blanditiis ducimus numquam, commodi corporis recusandae
-                        earum error vero necessitatibus voluptas.
+                        {children}
                     </div>
 
                     <div

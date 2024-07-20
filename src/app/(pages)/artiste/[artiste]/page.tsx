@@ -54,7 +54,7 @@ async function ArtistePage({
 }) {
     const albumsArrays = [
         "albums",
-        "compilations",
+        "compilation",
         "singles and ep",
         "feature and more",
     ];
