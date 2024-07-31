@@ -12,8 +12,8 @@ import { useSpotifyContext } from "@/utils/store/store";
 import { signOut, useSession } from "next-auth/react";
 function Menubar() {
     const { data: session, status } = useSession();
-    console.log(session);
     const searchParams = useSearchParams();
+    console.log(session);
     const { push, replace } = useRouter();
     const currentLayout = useSelectedLayoutSegment();
     const openFriendsTab = useSpotifyContext((prev) => prev.openFriendsTab);
@@ -92,7 +92,7 @@ function Menubar() {
                             alt={`signout-icon`}
                         />
                     </button>
-                    <div className="relative w-[40px] h-[40px] rounded-full">
+                    <div className="relative w-[40px] h-[40px] rounded-full overflow-clip">
                         {session?.user?.image ? (
                             <Image
                                 src={session.user.image}

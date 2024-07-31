@@ -1,5 +1,5 @@
 "use server";
-
+import { cookies } from "next/headers";
 export async function getAlbums({
     id,
     activetab,
@@ -7,17 +7,8 @@ export async function getAlbums({
     id: string;
     activetab: string;
 }) {
-    const token_access = await fetch(`https://accounts.spotify.com/api/token`, {
-        next: {
-            revalidate: 3600,
-        },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `grant_type=client_credentials&client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`,
-    });
-    const { access_token } = await token_access.json();
+    const cookieStore = cookies();
+    const access_token = cookieStore.get("oauth-access")?.value;
     const decodedURI = decodeURIComponent(activetab);
     const response = await fetch(
         `https://api.spotify.com/v1/artists/${id}/albums?include_groups=${
@@ -40,17 +31,8 @@ export async function getAlbums({
 }
 
 export async function getAlbumTracks({ id }: { id: string }) {
-    const token_access = await fetch(`https://accounts.spotify.com/api/token`, {
-        next: {
-            revalidate: 3600,
-        },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `grant_type=client_credentials&client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`,
-    });
-    const { access_token } = await token_access.json();
+    const cookieStore = cookies();
+    const access_token = cookieStore.get("oauth-access")?.value;
 
     const response = await fetch(
         `https://api.spotify.com/v1/albums/${id}/tracks`,
@@ -65,18 +47,8 @@ export async function getAlbumTracks({ id }: { id: string }) {
 }
 
 export async function getAlbum({ id }: { id: string }) {
-    const token_access = await fetch(`https://accounts.spotify.com/api/token`, {
-        next: {
-            revalidate: 3600,
-        },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `grant_type=client_credentials&client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`,
-    });
-
-    const { access_token } = await token_access.json();
+    const cookieStore = cookies();
+    const access_token = cookieStore.get("oauth-access")?.value;
 
     const response = await fetch(`https://api.spotify.com/v1/albums/${id}`, {
         headers: {
@@ -88,17 +60,8 @@ export async function getAlbum({ id }: { id: string }) {
 }
 
 export async function getLatestRelease() {
-    const token_access = await fetch(`https://accounts.spotify.com/api/token`, {
-        next: {
-            revalidate: 3600,
-        },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `grant_type=client_credentials&client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`,
-    });
-    const { access_token } = await token_access.json();
+    const cookieStore = cookies();
+    const access_token = cookieStore.get("oauth-access")?.value;
 
     const response = await fetch(
         `https://api.spotify.com/v1/browse/new-releases?limit=10`,
@@ -112,17 +75,8 @@ export async function getLatestRelease() {
     return data.albums.items;
 }
 export async function getFeaturedPlaylists() {
-    const token_access = await fetch(`https://accounts.spotify.com/api/token`, {
-        next: {
-            revalidate: 3600,
-        },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `grant_type=client_credentials&client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`,
-    });
-    const { access_token } = await token_access.json();
+    const cookieStore = cookies();
+    const access_token = cookieStore.get("oauth-access")?.value;
 
     const response = await fetch(
         `https://api.spotify.com/v1/browse/featured-playlists?limit=10`,

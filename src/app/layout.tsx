@@ -1,6 +1,8 @@
+"use client";
 import localFont from "next/font/local";
 import "./globals.css";
 import AuthProvider from "@/utils/AuthProvider";
+import { useEffect } from "react";
 const myFont = localFont({
     src: [
         {
@@ -35,6 +37,15 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    function preventRightClick(e: MouseEvent) {
+        e.preventDefault();
+        console.log(e);
+    }
+    // useEffect(() => {
+    //     window.addEventListener("contextmenu", preventRightClick);
+    //     return () =>
+    //         window.removeEventListener("contextmenu", preventRightClick);
+    // }, []);
     return (
         <html lang="en">
             <body className={`${myFont.className} bg-mainBackground`}>

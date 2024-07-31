@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { getArtiste } from "@/actions/artiste";
+import { getArtiste, getArtisteInfo } from "@/actions/artiste";
 type imageType = {
     url: string;
     height: number;
@@ -26,13 +26,14 @@ type Artiste = {
 async function ArtistePick({ id }: { id: string }) {
     const artiste: Artiste = await getArtiste({ id });
     const { images, name, genres } = artiste;
+    const artisteBrief = (await getArtisteInfo({ name })) as string;
     return (
         <div className="flex flex-col gap-[20px] w-[280px]">
             <div className="text-primaryForeground text-xl self-start font-semibold">
                 Artiste Pick
             </div>
-            <div className="flex flex-col gap-[30px] w-[320px] items-center">
-                <div className="w-[314px] h-[150px] rounded-[10px] bg-[#18191E] bg-opacity-30 pl-[13px] flex items-center">
+            <div className="flex flex-col gap-[30px] items-center">
+                <div className="h-[150px] rounded-[10px] bg-[#18191E] bg-opacity-30 pl-[13px] flex items-center">
                     <div className="flex gap-[13px]">
                         <div className="w-[105px] h-[105px] rounded-[5.12px] overflow-clip relative shrink-0">
                             <Image
@@ -57,10 +58,9 @@ async function ArtistePick({ id }: { id: string }) {
                         />
                     </div>
                     <div className="text-base text-primaryForeground">
-                        As they evolved from &apos;90s French house pioneers to
-                        2000s dance tastemakers to mainstream heroes in the
-                        2010s, Daft Punk remained one of dance music&apos;s most
-                        iconic acts...
+                        {`${artisteBrief.substring(0, 400)}${
+                            artisteBrief.length > 400 ? "..." : ""
+                        }`}
                     </div>
                     <div className="flex gap-[10px] flex-wrap">
                         {genres.map((item, indx) => (

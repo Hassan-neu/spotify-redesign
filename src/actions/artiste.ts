@@ -1,17 +1,13 @@
 "use server";
 
+import { Album, Track as TrackType } from "@/utils/types";
+type Track = TrackType & { album: Album };
+import { getTrack } from "./tracks";
+import { cookies } from "next/headers";
+
 export async function getArtiste({ id }: { id: string }) {
-    const token_access = await fetch(`https://accounts.spotify.com/api/token`, {
-        next: {
-            revalidate: 3600,
-        },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `grant_type=client_credentials&client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`,
-    });
-    const { access_token } = await token_access.json();
+    const cookieStore = cookies();
+    const access_token = cookieStore.get("oauth-access")?.value;
 
     const response = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
         headers: {
@@ -22,17 +18,8 @@ export async function getArtiste({ id }: { id: string }) {
     return data;
 }
 export async function getAboutArtiste({ id }: { id: string }) {
-    const token_access = await fetch(`https://accounts.spotify.com/api/token`, {
-        next: {
-            revalidate: 3600,
-        },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `grant_type=client_credentials&client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`,
-    });
-    const { access_token } = await token_access.json();
+    const cookieStore = cookies();
+    const access_token = cookieStore.get("oauth-access")?.value;
 
     const response = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
         headers: {
@@ -42,17 +29,8 @@ export async function getAboutArtiste({ id }: { id: string }) {
     const data = await response.json();
 }
 export async function getTopTracks({ id }: { id: string }) {
-    const token_access = await fetch(`https://accounts.spotify.com/api/token`, {
-        next: {
-            revalidate: 3600,
-        },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `grant_type=client_credentials&client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`,
-    });
-    const { access_token } = await token_access.json();
+    const cookieStore = cookies();
+    const access_token = cookieStore.get("oauth-access")?.value;
 
     const response = await fetch(
         `https://api.spotify.com/v1/artists/${id}/top-tracks`,
@@ -64,4 +42,36 @@ export async function getTopTracks({ id }: { id: string }) {
     );
     const data = await response.json();
     return data.tracks;
+}
+
+export async function getArtisteInfo({ name }: { name: string }) {
+    const fetchArtisteId = await fetch(
+        `https://api.genius.com/search?q=${encodeURIComponent(name)}`,
+        {
+            headers: {
+                Authorization: `Bearer 8xD0abdTD-7oB36uXeHrLJO80qhWav-dyuGbnVQMYeggRL8xhc0krJtcgNh9zfl5`,
+            },
+        }
+    );
+    const artisteInfoId = await fetchArtisteId.json();
+    // const id =
+    //     artisteInfoId["response"]["hits"][0]["result"]["primary_artist"]["id"];
+    const id = artisteInfoId["response"]["hits"].find(
+        (item) =>
+            !item.result.artist_names.includes("&") &&
+            item.result.artist_names == name
+    )["result"]["primary_artist"]["id"];
+
+    const fetchArtisteInfo = await fetch(
+        `https://api.genius.com/artists/${id}?text_format=html%2Cplain`,
+        {
+            headers: {
+                Authorization: `Bearer 8xD0abdTD-7oB36uXeHrLJO80qhWav-dyuGbnVQMYeggRL8xhc0krJtcgNh9zfl5`,
+            },
+        }
+    );
+    const artisteInfo = await fetchArtisteInfo.json();
+    const artistBrief =
+        artisteInfo["response"]["artist"]["description"]["plain"];
+    return artistBrief;
 }

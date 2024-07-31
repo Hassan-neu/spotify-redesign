@@ -1,16 +1,18 @@
-import PlaylistCard from "@/components/spotify/playlistCard";
-import Form from "@/components/ui/form/form";
-import { ListUser } from "@/components/ui/form/userList";
-import { prisma } from "@/lib/prismaClient";
+"use client";
 
-export default async function Home() {
-    // const users = await prisma.user.findMany({
-    //     select: {
-    //         id: true,
-    //         name: true,
-    //         email: true,
-    //     },
-    // });
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+export default function Home() {
+    const { data: session, status } = useSession();
+    const { replace } = useRouter();
+    useEffect(() => {
+        if (status == "authenticated") {
+            return replace("/home");
+        }
+        return replace("/login");
+    }, [replace, status]);
     return (
         <main className="flex flex-col items-center justify-between p-24 space-y-3">
             {/* <Form />

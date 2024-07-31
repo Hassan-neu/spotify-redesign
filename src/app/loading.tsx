@@ -6,13 +6,25 @@ function Loading() {
     const loader = useRef<HTMLDivElement | null>(null);
     useGSAP(
         () => {
-            const circles = gsap.utils.toArray("span", loader);
-            console.log(circles);
+            const circles: HTMLSpanElement[] = gsap.utils.toArray(
+                loader.current?.childNodes!,
+                loader
+            );
+            const tl = gsap.timeline({});
+            tl.to(circles, {
+                y: 8,
+                duration: 0.5,
+                stagger: {
+                    repeat: -1,
+                    yoyo: true,
+                    each: 0.9,
+                },
+            });
         },
         { scope: loader }
     );
     return (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center h-screen">
             <div
                 className="flex gap-2 items-center justify-center"
                 ref={loader}

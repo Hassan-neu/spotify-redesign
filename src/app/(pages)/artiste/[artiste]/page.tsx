@@ -59,6 +59,7 @@ async function ArtistePage({
         "feature and more",
     ];
 
+    console.log(activetab);
     return (
         <div className="border rounded-[10px] border-secondaryBackground overflow-scroll hide-scroll min-h-screen">
             <ArtisteBanner artiste={artiste} />
@@ -68,7 +69,7 @@ async function ArtistePage({
             {!activetab ? (
                 <Home artiste={artiste} />
             ) : decodeURIComponent(activetab) == "about" ? (
-                <About />
+                <About artiste={artiste} />
             ) : (
                 albumsArrays.some(
                     (item) => decodeURIComponent(activetab) == item

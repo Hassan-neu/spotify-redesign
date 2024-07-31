@@ -38,12 +38,12 @@ async function ArtisteBanner({ artiste }: { artiste: string }) {
                     src={images[0].url}
                     alt={name}
                     fill
-                    className="object-cover object-top"
+                    className="object-cover object-[50%_20%]"
                 />
             </div>
             <div className="flex justify-between px-[37px] absolute bottom-9 left-0 w-full">
                 <div className="flex flex-col gap-5">
-                    <span className="text-primaryForeground font-black text-[50px] capitalize">
+                    <span className="text-primaryBackground font-black text-[50px] capitalize mix-blend-darken">
                         {name}
                     </span>
                     <span className="text-primaryForeground text-sm font-medium capitalize">

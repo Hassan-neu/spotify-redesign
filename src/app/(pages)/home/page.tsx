@@ -6,6 +6,7 @@ import Friends from "@/components/spotify/friends";
 import PlaylistCard from "@/components/spotify/playlistCard";
 import { Metadata } from "next";
 import React, { Suspense } from "react";
+
 export const metadata: Metadata = {
     title: "Spotify Redesign | Home",
     description: "Spotify Redesign By Juxtopposed",
