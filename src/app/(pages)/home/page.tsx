@@ -2,16 +2,17 @@ import HomeAlbums from "@/components/pages/home/homealbums";
 import HomeMenu from "@/components/pages/home/homemenu";
 import HomeItems from "@/components/pages/home/homeitems";
 import HomePlaylists from "@/components/pages/home/homeplaylists";
-import Friends from "@/components/spotify/friends";
+import Friends from "@/components/activities/useractivities";
 import PlaylistCard from "@/components/spotify/playlistCard";
 import { Metadata } from "next";
 import React, { Suspense } from "react";
+import { getUserTops } from "@/actions/activities";
 
 export const metadata: Metadata = {
     title: "Spotify Redesign | Home",
     description: "Spotify Redesign By Juxtopposed",
 };
-function Page() {
+async function Page() {
     return (
         <div className="border rounded-[10px] border-secondaryBackground overflow-scroll hide-scroll">
             <Suspense fallback={<div>Loadiingggg...</div>}>

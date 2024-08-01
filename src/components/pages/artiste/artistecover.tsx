@@ -1,4 +1,5 @@
 import { getArtiste } from "@/actions/artiste";
+import { addCommas } from "@/utils/formatNumber";
 import Image from "next/image";
 import React from "react";
 type imageType = {
@@ -26,11 +27,6 @@ type Artiste = {
 async function ArtisteBanner({ artiste }: { artiste: string }) {
     const artisteDetails: Artiste = await getArtiste({ id: artiste });
     const { images, name, genres, followers } = artisteDetails;
-    function addCommas(value: number) {
-        const intl = new Intl.NumberFormat("en-us");
-        const formatted = intl.format(value);
-        return formatted;
-    }
     return (
         <div className="w-full h-[426px] relative">
             <div className="relative h-full">

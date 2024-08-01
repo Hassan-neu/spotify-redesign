@@ -1,4 +1,3 @@
-"use client";
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import { Inter } from "next/font/google";
@@ -6,10 +5,10 @@ import "../globals.css";
 import Menubar from "@/components/spotify/menubar";
 import SideMenu from "@/components/spotify/sideMenu";
 import NowPlaying from "@/components/spotify/nowplaying";
-import Friends from "@/components/spotify/friends";
+import Friends from "@/components/activities/useractivities";
 import React from "react";
-import { useSpotifyContext } from "@/utils/store/store";
 import localFont from "next/font/local";
+import ActivitiesList from "@/components/activities/activitieslist";
 const inter = Inter({ subsets: ["latin"], variable: "--inter-font" });
 const myFont = localFont({
     src: [
@@ -45,14 +44,15 @@ export default function Layout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const toOpenFriendTab = useSpotifyContext((prev) => prev.isFriendsTabOpen);
     return (
         <main className="grid grid-cols-[227px,_auto] grid-rows-[54px,_calc(100vh_-_(calc(81px_+_54px))),_81px] bg-mainBackground">
             <Menubar />
             <SideMenu />
             <div className="col-[2/-1] row-[2/3]  overflow-scroll hide-scroll grid grid-cols-[1fr,_auto] gap-[5px] auto-rows-auto">
                 {children}
-                {toOpenFriendTab && <Friends />}
+                <Friends>
+                    <ActivitiesList />
+                </Friends>
             </div>
             <NowPlaying />
         </main>

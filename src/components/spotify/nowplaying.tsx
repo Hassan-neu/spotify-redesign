@@ -1,17 +1,9 @@
-"use client";
+import { getUserTops } from "@/actions/activities";
 import { getNowPlaying } from "@/actions/nowplaying";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function NowPlaying() {
-    // const [currentState, setCurrentState] = useState({});
-    // async function getCurrentState() {
-    //     const data = await getNowPlaying();
-    //     setCurrentState(data);
-    // }
-    // useEffect(() => {
-    //     getCurrentState();
-    // }, []);
     return (
         <div className="pl-[21px] pr-[18px] py-3 rounded-[10px] flex items-center bg-[#333842] col-[2/-1] row-[3/4] mt-[7px]">
             <div className="flex gap-[5px] items-center">
