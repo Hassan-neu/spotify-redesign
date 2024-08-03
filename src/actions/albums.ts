@@ -26,8 +26,8 @@ export async function getAlbums({
             },
         }
     );
-    const data = await response.json();
-    return data.items;
+    const { items } = await response.json();
+    return items;
 }
 
 export async function getAlbumTracks({ id }: { id: string }) {
@@ -42,8 +42,8 @@ export async function getAlbumTracks({ id }: { id: string }) {
             },
         }
     );
-    const data = await response.json();
-    return data.items;
+    const { items } = await response.json();
+    return items;
 }
 
 export async function getAlbum({ id }: { id: string }) {
@@ -86,6 +86,8 @@ export async function getFeaturedPlaylists() {
             },
         }
     );
-    const data = await response.json();
-    return data.playlists.items;
+    const {
+        playlists: { items },
+    } = await response.json();
+    return items;
 }

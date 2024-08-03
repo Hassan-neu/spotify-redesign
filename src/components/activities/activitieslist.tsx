@@ -27,6 +27,8 @@ type Artiste = {
 };
 async function ActivitiesList() {
     const userTopItems: Artiste[] = await getUserTops({ type: "artists" });
+    const userTopTracks: Artiste[] = await getUserTops({ type: "tracks" });
+
     return (
         <>
             {userTopItems.map((data, indx) => (

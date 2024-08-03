@@ -58,8 +58,6 @@ async function ArtistePage({
         "singles and ep",
         "feature and more",
     ];
-
-    console.log(activetab);
     return (
         <div className="border rounded-[10px] border-secondaryBackground overflow-scroll hide-scroll min-h-screen">
             <ArtisteBanner artiste={artiste} />

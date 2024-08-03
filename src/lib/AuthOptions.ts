@@ -1,13 +1,7 @@
 import Spotify from "next-auth/providers/spotify";
 import { NextAuthOptions } from "next-auth";
 import { JWT } from "next-auth/jwt";
-import { Session } from "next-auth";
 import { cookies } from "next/headers";
-interface NewSession extends Session {
-    access_token?: string;
-    refresh_token?: string;
-}
-
 export const AuthOptions: NextAuthOptions = {
     providers: [
         Spotify({
@@ -23,31 +17,24 @@ export const AuthOptions: NextAuthOptions = {
     ],
     callbacks: {
         async jwt({ account, token }): Promise<JWT> {
+            console.log({ from: "jwt", ...account });
             if (account) {
-                (token.access_token = account?.access_token),
-                    (token.refresh_token = account?.refresh_token);
-            }
-            return token;
-        },
-        async session({
-            session,
-            token,
-        }: {
-            session: Session;
-            token: JWT;
-        }): Promise<Session> {
-            if (token) {
                 const cookieStore = cookies();
-                cookieStore.set("oauth-access", token.access_token as string, {
-                    secure: true,
-                });
+                cookieStore.set(
+                    "oauth-access",
+                    account.access_token as string,
+                    {
+                        maxAge: 3600,
+                        httpOnly: true,
+                    }
+                );
                 cookieStore.set(
                     "oauth-refresh",
-                    token.refresh_token as string,
-                    { secure: true }
+                    account.refresh_token as string,
+                    { httpOnly: true }
                 );
             }
-            return session;
+            return token;
         },
     },
     pages: {

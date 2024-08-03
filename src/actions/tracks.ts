@@ -1,4 +1,8 @@
 "use server";
+import { Album, Track as TrackType } from "@/utils/types";
+import { cookies } from "next/headers";
+import { parse } from "node-html-parser";
+type Track = TrackType & { album: Album };
 
 export async function getTrack({ id }: { id: string }) {
     const cookieStore = cookies();
@@ -12,12 +16,6 @@ export async function getTrack({ id }: { id: string }) {
     const data = await response.json();
     return data;
 }
-
-import { Album, Track as TrackType } from "@/utils/types";
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
-import { parse } from "node-html-parser";
-type Track = TrackType & { album: Album };
 
 export async function getLyrics({ id }: { id: string }) {
     const trackDetails: Track = await getTrack({ id });

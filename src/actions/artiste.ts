@@ -40,8 +40,8 @@ export async function getTopTracks({ id }: { id: string }) {
             },
         }
     );
-    const data = await response.json();
-    return data.tracks;
+    const { tracks } = await response.json();
+    return tracks;
 }
 
 export async function getArtisteInfo({ name }: { name: string }) {

@@ -25,7 +25,7 @@ export async function generateMetadata({
     } = uniqueAlbum;
     return {
         title: `Album | ${name}`,
-        description: `Artiste page for ${name}`,
+        description: `Album page for ${name}`,
     };
 }
 function Page({ params: { album } }: { params: { album: string } }) {

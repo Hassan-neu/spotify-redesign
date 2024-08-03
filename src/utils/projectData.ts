@@ -157,7 +157,7 @@ export const sideMenu: SideMenu[] = [
     },
     {
         id: 206,
-        href: "/",
+        href: "/podcast",
         icon: "/assets/spotify-icons/podcast.png",
         label: "Podcasts",
     },

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 function HomeMenu() {
@@ -51,15 +51,6 @@ function HomeMenu() {
                     onClick={() => setFilterOption({ param: "podcast" })}
                 >
                     Podcasts
-                </button>
-                <button
-                    className={cn(
-                        "px-[15px] py-2 text-white text-sm rounded-lg bg-secondaryBackground bg-opacity-50",
-                        sortClassName({ param: "audiobook" })
-                    )}
-                    onClick={() => setFilterOption({ param: "audiobook" })}
-                >
-                    Audiobooks
                 </button>
             </div>
             <button onClick={() => alert("Hello")}>

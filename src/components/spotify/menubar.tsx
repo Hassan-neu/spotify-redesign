@@ -10,10 +10,10 @@ import {
 } from "next/navigation";
 import { useSpotifyContext } from "@/utils/store/store";
 import { signOut, useSession } from "next-auth/react";
+import { Activity, ActivitySquare, AudioLines, LogOut } from "lucide-react";
 function Menubar() {
     const { data: session, status } = useSession();
     const searchParams = useSearchParams();
-    console.log(session);
     const { push, replace } = useRouter();
     const currentLayout = useSelectedLayoutSegment();
     const openFriendsTab = useSpotifyContext((prev) => prev.openFriendsTab);
@@ -71,7 +71,7 @@ function Menubar() {
             </div>
             <div className="flex shrink-0 justify-end">
                 <div className="flex items-center gap-[13px] ">
-                    {userNav.map((nav) => (
+                    {/* {userNav.map((nav) => (
                         <button
                             key={nav.id}
                             onClick={() => nav?.btnFunc(openFriendsTab)}
@@ -83,13 +83,17 @@ function Menubar() {
                                 alt={`${nav.label}-icon`}
                             />
                         </button>
-                    ))}
+                    ))} */}
+                    <button onClick={openFriendsTab}>
+                        <AudioLines
+                            size={25}
+                            className="text-secondaryForeground"
+                        />
+                    </button>
                     <button onClick={() => signOut({ callbackUrl: "/login" })}>
-                        <Image
-                            src={"/assets/spotify-icons/user.png"}
-                            width={35}
-                            height={35}
-                            alt={`signout-icon`}
+                        <LogOut
+                            size={25}
+                            className="text-secondaryForeground"
                         />
                     </button>
                     <div className="relative w-[40px] h-[40px] rounded-full overflow-clip">

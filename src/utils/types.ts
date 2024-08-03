@@ -87,3 +87,43 @@ export type Album = {
     genres: string[];
     artists?: Artiste[];
 };
+
+export interface Podcasts {
+    show: {
+        description: string;
+        id: string;
+        explicit: boolean;
+        images: imageType[];
+        name: string;
+        publisher: string;
+        type: string;
+        total_episodes: number;
+        media_type: string;
+    };
+}
+export interface Podcast {
+    description: string;
+    id: string;
+    explicit: boolean;
+    images: imageType[];
+    name: string;
+    publisher: string;
+    type: string;
+    total_episodes: number;
+    media_type: string;
+}
+export interface ShowEpisode {
+    previous: boolean | string;
+    next: boolean | string;
+    items: Episode[];
+}
+
+export interface Episode {
+    audio_preview_url: string;
+    description: string;
+    duration_ms: number;
+    id: string;
+    images: imageType[];
+    name: string;
+    release_date: string;
+}

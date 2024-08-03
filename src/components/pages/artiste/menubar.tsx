@@ -2,16 +2,10 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { artistenav } from "@/utils/projectData";
-import {
-    usePathname,
-    useSearchParams,
-    useRouter,
-    useParams,
-} from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import React from "react";
 function ArtisteMenu() {
-    const { artiste } = useParams();
     const path = usePathname();
     const searchParams = useSearchParams();
     const { replace } = useRouter();
@@ -25,7 +19,7 @@ function ArtisteMenu() {
         } else {
             newParams.delete("activetab");
         }
-        replace(`/artiste/${artiste}?${newParams}`, { scroll: false });
+        replace(`${path}?${newParams}`, { scroll: false });
     };
     const setActiveView = (param: string) => {
         const newParams = new URLSearchParams(searchParams);
